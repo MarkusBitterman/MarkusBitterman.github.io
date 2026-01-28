@@ -1,0 +1,76 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <strong>🧾✨ Markus Bitterman</strong>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarMain" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          🏠 Home
+        </a>
+        <a class="navbar-item" href="/about/">
+          👤 About
+        </a>
+        <a class="navbar-item" href="/portfolio/">
+          🏪 Portfolio
+        </a>
+        <a class="navbar-item" href="/blog/">
+          📰 Blog
+        </a>
+        <a class="navbar-item" href="/now/">
+          🧭 Now
+        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="/playground/">
+              🛝 Playground
+            </a>
+            <a class="navbar-item" href="/sandbox/">
+              ⛱️ Sandbox
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>View Repo</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile navbar toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  });
+</script>
