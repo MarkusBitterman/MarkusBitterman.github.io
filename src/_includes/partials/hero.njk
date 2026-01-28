@@ -1,0 +1,14 @@
+<section class="hero is-medium {{ heroClass or 'is-primary' }}">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1">
+        {{ heroTitle or title }}
+      </h1>
+      {% if heroSubtitle %}
+      <p class="subtitle is-3">
+        {{ heroSubtitle }}
+      </p>
+      {% endif %}
+    </div>
+  </div>
+</section>

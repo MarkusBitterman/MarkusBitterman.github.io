@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+---
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8-desktop is-offset-2-desktop">
+        <article class="content">
+          <!-- Post header -->
+          <header class="mb-6">
+            <h1 class="title is-1">{{ title }}</h1>
+            <p class="subtitle is-6">
+              <time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time>
+              {% if tags %}
+              <span class="ml-3">
+                {% for tag in tags %}
+                  {% if tag != "posts" %}
+                  <span class="tag is-link is-light">{{ tag }}</span>
+                  {% endif %}
+                {% endfor %}
+              </span>
+              {% endif %}
+            </p>
+          </header>
+          
+          <!-- Post content -->
+          <div class="post-content">
+            {{ content | safe }}
+          </div>
+          
+          <!-- Post footer -->
+          <footer class="mt-6 pt-5 has-border-top">
+            <nav class="level">
+              <div class="level-left">
+                <div class="level-item">
+                  <a href="/blog/" class="button is-light">← Back to all posts</a>
+                </div>
+              </div>
+            </nav>
+          </footer>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
