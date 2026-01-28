@@ -9,6 +9,17 @@
 
 ---
 
+## 📚 Documentation
+
+- **[README.md](./README.md)** - This file! Quick start and overview
+- **[GETTING_STARTED.md](./GETTING_STARTED.md)** - Step-by-step setup guide with examples
+- **[TERMUX_SETUP.md](./TERMUX_SETUP.md)** - Complete mobile development setup (Android/Termux/Acode)
+- **[CONTRIBUTING.md](./CONTRIBUTING.md)** - Development workflow, testing, and contribution guidelines
+- **[CHANGELOG.md](./CHANGELOG.md)** - Version history and features
+- **[tests/README.md](./tests/README.md)** - Testing infrastructure documentation
+
+---
+
 ## 🎯 What This Is
 
 This repository is a **simple-but-smart GitHub Pages site** that serves as:
