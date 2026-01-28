@@ -69,7 +69,9 @@ async function checkLinks() {
           href.startsWith('mailto:') ||
           href.startsWith('tel:') ||
           href.startsWith('#') ||
-          href.startsWith('javascript:')) {
+          href.startsWith('javascript:') ||
+          href.startsWith('data:') ||
+          href.startsWith('vbscript:')) {
         return;
       }
 
