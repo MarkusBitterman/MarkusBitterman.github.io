@@ -1,0 +1,94 @@
+// Customization: Override Bulma variables before importing
+// See all variables: https://bulma.io/documentation/customize/variables/
+
+// Primary colors - customize to your taste
+$primary: #3273dc;
+$link: #3273dc;
+$info: #209cee;
+$success: #23d160;
+$warning: #ffdd57;
+$danger: #ff3860;
+
+// Typography
+$family-sans-serif: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$body-size: 16px;
+
+// Responsiveness
+$tablet: 769px;
+$desktop: 1024px;
+$widescreen: 1216px;
+
+// Import Bulma
+@import "../../node_modules/bulma/bulma.sass";
+
+// Custom styles
+.has-border-top {
+  border-top: 1px solid $grey-lighter;
+}
+
+// Post content styling
+.post-content {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+  
+  p {
+    margin-bottom: 1em;
+  }
+  
+  code {
+    padding: 0.2em 0.4em;
+    background-color: $grey-lightest;
+    border-radius: 3px;
+  }
+  
+  pre {
+    padding: 1em;
+    margin-bottom: 1em;
+    background-color: $grey-lightest;
+    border-radius: 5px;
+    overflow-x: auto;
+    
+    code {
+      padding: 0;
+      background: none;
+    }
+  }
+}
+
+// Hero customization
+.hero {
+  &.is-primary {
+    background: linear-gradient(135deg, $primary 0%, darken($primary, 10%) 100%);
+  }
+}
+
+// Navbar enhancement
+.navbar {
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+}
+
+// Footer spacing
+.footer {
+  margin-top: 3rem;
+  padding: 3rem 1.5rem 3rem;
+  background-color: $white-bis;
+}
+
+// Card hover effect
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(10, 10, 10, 0.1);
+  }
+}
+
+// Utility: emoji spacing
+.title, .subtitle {
+  .emoji {
+    margin-right: 0.25em;
+  }
+}

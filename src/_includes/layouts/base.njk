@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ description or 'Markus Bitterman: Portfolio, Blog, Devlog, and Playground' }}">
+  <title>{{ title or 'Markus Bitterman' }}</title>
+  
+  <!-- Bulma CSS via custom Sass compilation -->
+  <link rel="stylesheet" href="/css/main.css">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  {% include "partials/navbar.njk" %}
+  
+  <main>
+    {{ content | safe }}
+  </main>
+  
+  {% include "partials/footer.njk" %}
+</body>
+</html>
