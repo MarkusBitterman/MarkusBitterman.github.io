@@ -19,7 +19,10 @@ _site/
 Thumbs.db
 
 # IDEs
-.vscode/
 .idea/
 *.swp
 *.swo
+
+# Test artifacts
+coverage/
+.nyc_output/

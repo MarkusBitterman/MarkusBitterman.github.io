@@ -190,6 +190,39 @@ Bulma provides many ready-to-use components. Check out:
 | `npm run build:sass` | Compile Sass to CSS |
 | `npm run watch` | Watch for changes (both Eleventy and Sass) |
 | `npm run clean` | Delete the `_site/` directory |
+| `npm test` | Run all tests (build, HTML validation, link checking) |
+| `npm run test:html` | Validate HTML structure |
+| `npm run test:links` | Check for broken internal links |
+
+---
+
+## 🧪 Testing
+
+This project includes automated tests to ensure code quality:
+
+- **Build Verification**: Ensures the site builds without errors
+- **HTML Validation**: Checks HTML structure and accessibility
+- **Link Checking**: Verifies all internal links are valid
+
+Run tests before committing:
+
+```bash
+npm test
+```
+
+---
+
+## 📱 Mobile Development
+
+You can develop this site on Android using **Termux** and **Acode**!
+
+See [TERMUX_SETUP.md](./TERMUX_SETUP.md) for complete setup instructions for:
+- Installing Node.js and dependencies on Termux
+- Configuring Acode for editing
+- Running the dev server on mobile
+- Committing and pushing from your phone
+
+This enables full development workflow on a mobile device! 🚀📱
 
 ---
 
@@ -283,13 +316,25 @@ Sass compiles to CSS. Bulma is imported as Sass, so you can customize variables 
 
 ## 🤝 Contributing
 
-This is primarily a personal site, but if you spot bugs or have suggestions:
+This is primarily a personal site, but contributions are welcome!
 
-1. Open an issue
-2. Submit a pull request
-3. Share your own fork!
+### Quick Start for Contributors
 
-**Better yet**: Fork this repo and build your own version!
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Make your changes
+4. Run tests: `npm test`
+5. Commit: `git commit -m "feat: Add awesome feature"`
+6. Push and open a Pull Request
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines on:
+- Development workflow
+- Testing procedures
+- Code style
+- Commit conventions
+- Pull request process
+
+**Better yet**: Fork this repo and build your own version! 🎨
 
 ---
 

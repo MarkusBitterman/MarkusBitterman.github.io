@@ -10,7 +10,11 @@
     "watch:eleventy": "eleventy --serve",
     "watch:sass": "sass src/styles/main.scss _site/css/main.css --watch",
     "start": "npm run watch",
-    "clean": "rm -rf _site"
+    "clean": "rm -rf _site",
+    "test": "npm run test:build && npm run test:html && npm run test:links",
+    "test:build": "npm run build",
+    "test:html": "node tests/validate-html.js",
+    "test:links": "node tests/check-links.js"
   },
   "keywords": [
     "eleventy",
@@ -26,6 +30,8 @@
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
     "bulma": "^0.9.4",
+    "cheerio": "^1.0.0-rc.12",
+    "glob": "^10.3.10",
     "sass": "^1.69.5"
   }
 }
