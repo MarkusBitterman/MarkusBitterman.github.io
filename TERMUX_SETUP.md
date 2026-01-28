@@ -303,13 +303,18 @@ Save → Build automatically → Refresh browser
 If you see "Port 8080 already in use":
 
 ```bash
-# Find the process
+# Find the process using the port
+# Option 1: Using netstat (usually available)
+netstat -tulpn | grep 8080
+
+# Option 2: Install and use lsof
+pkg install lsof
 lsof -i :8080
 
-# Kill it
+# Kill the process (replace <PID> with actual process ID)
 kill -9 <PID>
 
-# Or use a different port
+# Or simply use a different port
 npx eleventy --serve --port=3000
 ```
 
