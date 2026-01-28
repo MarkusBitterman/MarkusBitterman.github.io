@@ -31,6 +31,11 @@ module.exports = function(eleventyConfig) {
     const excerpt = content.substring(0, 200);
     return excerpt + (content.length > 200 ? '...' : '');
   });
+  
+  // Add a filter to get the current year
+  eleventyConfig.addFilter("currentYear", () => {
+    return new Date().getFullYear();
+  });
 
   return {
     dir: {

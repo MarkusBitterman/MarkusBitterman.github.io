@@ -84,11 +84,13 @@ $widescreen: 1216px;
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(10, 10, 10, 0.1);
   }
-}
-
-// Utility: emoji spacing
-.title, .subtitle {
-  .emoji {
-    margin-right: 0.25em;
+  
+  // Respect user's motion preferences
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
   }
 }

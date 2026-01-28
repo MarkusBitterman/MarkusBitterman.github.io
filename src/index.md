@@ -68,7 +68,7 @@ permalink: /index.html
           <div class="card-content">
             <p class="title is-4">🧭 Now / Status</p>
             <p class="content">
-              What I'm working on right now. Inspired by the <a href="https://nownownow.com/about" target="_blank">/now movement</a>.
+              What I'm working on right now. Inspired by the <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">/now movement</a>.
             </p>
             <a href="/now/" class="button is-primary is-light">See What's Up →</a>
           </div>
@@ -120,9 +120,9 @@ permalink: /index.html
       <h2 class="title is-2">📺 Clone This Repo & Roll Your Own</h2>
       <p class="is-size-5">
         This entire site is <strong>open source and built to be cloned</strong>. 
-        It's powered by <a href="https://www.11ty.dev/" target="_blank">Eleventy</a>, 
-        styled with <a href="https://bulma.io/" target="_blank">Bulma</a> and 
-        <a href="https://sass-lang.com/" target="_blank">Sass</a>, 
+        It's powered by <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy</a>, 
+        styled with <a href="https://bulma.io/" target="_blank" rel="noopener noreferrer">Bulma</a> and 
+        <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">Sass</a>, 
         and designed to be your <strong>starter kit</strong>.
       </p>
       <p class="is-size-5">
@@ -130,7 +130,7 @@ permalink: /index.html
         Fork it, customize it, make it yours!
       </p>
       <div class="buttons is-centered mt-5">
-        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" class="button is-primary is-medium" target="_blank">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" class="button is-primary is-medium" target="_blank" rel="noopener noreferrer">
           <span class="icon">
             <i class="fab fa-github"></i>
           </span>

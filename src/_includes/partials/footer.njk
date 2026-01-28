@@ -8,13 +8,13 @@
         A living site: portfolio 🏪 • blog 📰 • devlog 🧑🏻‍💻 • playground 🛝 • sandbox ⛱️
       </p>
       <p>
-        Built with <a href="https://www.11ty.dev/" target="_blank">Eleventy</a>, 
-        <a href="https://bulma.io/" target="_blank">Bulma</a>, and 
-        <a href="https://sass-lang.com/" target="_blank">Sass</a> • 
-        Hosted on <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>
+        Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy</a>, 
+        <a href="https://bulma.io/" target="_blank" rel="noopener noreferrer">Bulma</a>, and 
+        <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">Sass</a> • 
+        Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
       </p>
       <p class="is-size-7">
-        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">
           <span class="icon">
             <i class="fab fa-github"></i>
           </span>
@@ -22,19 +22,8 @@
         </a>
       </p>
       <p class="is-size-7 mt-2">
-        © {{ currentYear }} Markus Bitterman • Licensed under MIT
+        © {{ '' | currentYear }} Markus Bitterman • Licensed under MIT
       </p>
     </div>
   </div>
 </footer>
-
-<script>
-  // Set current year dynamically
-  document.addEventListener('DOMContentLoaded', () => {
-    const yearElement = document.querySelector('footer .content');
-    if (yearElement) {
-      const year = new Date().getFullYear();
-      yearElement.innerHTML = yearElement.innerHTML.replace('{{ currentYear }}', year);
-    }
-  });
-</script>
