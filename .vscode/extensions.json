@@ -1,0 +1,40 @@
+{
+  "recommendations": [
+    // Essential
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    
+    // Web Development
+    "dbaeumer.vscode-eslint",
+    "formulahendry.auto-rename-tag",
+    "bradlc.vscode-tailwindcss",
+    
+    // Markdown
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    
+    // Git
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    
+    // Nunjucks/Template Support
+    "ronnidc.nunjucks",
+    "okitavera.vscode-nunjucks-formatter",
+    
+    // Sass/SCSS
+    "syler.sass-indented",
+    "mrmlnc.vscode-scss",
+    
+    // HTML/CSS
+    "ecmel.vscode-html-css",
+    "zignd.html-css-class-completion",
+    
+    // Utilities
+    "christian-kohler.path-intellisense",
+    "gruntfuggly.todo-tree",
+    "wayou.vscode-todo-highlight",
+    
+    // Live Preview
+    "ms-vscode.live-server"
+  ]
+}

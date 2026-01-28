@@ -1,0 +1,66 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.rulers": [80, 120],
+  "editor.wordWrap": "on",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  
+  // Language-specific settings
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  
+  // Eleventy-specific
+  "files.associations": {
+    "*.njk": "html",
+    ".eleventy.js": "javascript"
+  },
+  
+  // Search exclusions
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/_site": true,
+    "**/package-lock.json": true
+  },
+  
+  // File explorer exclusions
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": false,
+    "**/_site": false
+  },
+  
+  // NPM scripts
+  "npm.enableScriptExplorer": true,
+  
+  // Git
+  "git.ignoreLimitWarning": true,
+  
+  // Terminal
+  "terminal.integrated.defaultProfile.linux": "bash",
+  
+  // Suggestions
+  "emmet.includeLanguages": {
+    "njk": "html",
+    "nunjucks": "html"
+  }
+}

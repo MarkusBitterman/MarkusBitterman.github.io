@@ -1,4 +1,28 @@
+# Sass
 .sass-cache/
 *.css.map
 *.sass.map
 *.scss.map
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Eleventy
+_site/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDEs
+.idea/
+*.swp
+*.swo
+
+# Test artifacts
+coverage/
+.nyc_output/

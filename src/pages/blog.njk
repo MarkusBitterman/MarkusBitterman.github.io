@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+title: "Blog & Devlog"
+description: "Thoughts, tutorials, devlogs, and journal entries"
+hero: true
+heroTitle: "📰 Blog & Devlog"
+heroSubtitle: "Thoughts • Tutorials • Progress Updates"
+permalink: /blog/index.html
+---
+
+<section class="hero is-medium is-info">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1">📰 Blog & Devlog</h1>
+      <p class="subtitle is-3">Thoughts • Tutorials • Progress Updates</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content">
+      <p class="is-size-5 mb-6">
+        Welcome to my blog and devlog! Here you'll find thoughts, tutorials, progress updates, 
+        and journal entries. In the spirit of the classic Unix "finger file" tradition, 
+        this is where I share what I'm working on and what I'm learning.
+      </p>
+    </div>
+
+    {% if collections.posts.length > 0 %}
+    <div class="columns is-multiline">
+      {% for post in collections.posts %}
+      <div class="column is-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">
+                  <a href="{{ post.url }}">{{ post.data.title }}</a>
+                </p>
+                <p class="subtitle is-6">
+                  <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+                  {% if post.data.tags %}
+                  <span class="ml-3">
+                    {% for tag in post.data.tags %}
+                      {% if tag != "posts" %}
+                      <span class="tag is-info is-light">{{ tag }}</span>
+                      {% endif %}
+                    {% endfor %}
+                  </span>
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+            <div class="content">
+              {% if post.data.description %}
+                {{ post.data.description }}
+              {% else %}
+                {{ post.templateContent | excerpt }}
+              {% endif %}
+              <br>
+              <a href="{{ post.url }}" class="button is-light is-small mt-2">Read more →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="notification is-info is-light">
+      <p>No posts yet! Check back soon for new content.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
