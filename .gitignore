@@ -9,10 +9,10 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
+# package-lock.json
 
 # Eleventy
-# _site/
+_site/
 
 # OS
 .DS_Store
