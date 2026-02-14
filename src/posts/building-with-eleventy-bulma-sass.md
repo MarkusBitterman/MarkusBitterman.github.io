@@ -5,10 +5,9 @@ layout: layouts/post.njk
 description: "A deep dive into why I chose Eleventy + Bulma + Sass for this site, and how they work together beautifully."
 tags:
   - posts
-  - tutorial
-  - eleventy
-  - bulma
-  - sass
+  - 🏗️ tutorial
+  - 🔧 eleventy
+  - 💾 css
 ---
 
 ## Choosing the Right Stack 🧬
@@ -28,15 +27,19 @@ After evaluating several options, I landed on **Eleventy + Bulma + Sass**. Here'
 [Eleventy](https://www.11ty.dev/) is a static site generator that just works. Here's what I love about it:
 
 ### It's Simple
+
 No complex configuration. No magic. Just straightforward templating and content generation.
 
 ### It's Flexible
+
 You can use multiple template languages (I chose Nunjucks), and it doesn't force you into a specific structure.
 
 ### It's Fast
+
 Build times are incredibly fast. The development server with live reload is instant.
 
 ### It's Well-Documented
+
 The docs are clear, examples are plentiful, and the community is helpful.
 
 ### Basic Eleventy Setup
@@ -60,18 +63,23 @@ That's it! You're up and running.
 [Bulma](https://bulma.io/) is a modern CSS framework that I chose for several reasons:
 
 ### Pure CSS
+
 No JavaScript dependencies. It's just CSS classes you apply to your HTML.
 
 ### Readable Class Names
+
 Instead of cryptic abbreviations, Bulma uses clear, semantic names: `.button.is-primary`, `.card`, `.hero.is-large`.
 
 ### Great Components
+
 Cards, navbars, heroes, modals — all the common patterns are built-in and well-designed.
 
 ### Flexbox-Based
+
 Modern layout techniques baked in. Responsive by default.
 
 ### Easy to Customize
+
 This is where Sass comes in...
 
 ## Why Sass? 🎨
@@ -95,7 +103,7 @@ $family-sans-serif: "Segoe UI", sans-serif;
 // Custom enhancements
 .card {
   transition: transform 0.2s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
   }
@@ -103,6 +111,7 @@ $family-sans-serif: "Segoe UI", sans-serif;
 ```
 
 ### Modular Organization
+
 Keep your styles organized in separate files and import them as needed.
 
 ## How They Work Together 🤝

@@ -1,6 +1,6 @@
 # 🧾✨ MarkusBitterman.github.io
 
-**A living GitHub Pages site: Portfolio • Blog • Devlog • Playground • Starter Kit**
+A living GitHub Pages site: Portfolio • Blog • Devlog • Toolbox • Starter Kit
 
 [![Live Site](https://img.shields.io/badge/live-site-blue)](https://MarkusBitterman.github.io)
 [![Built with Eleventy](https://img.shields.io/badge/built%20with-Eleventy-brightgreen)](https://www.11ty.dev/)
@@ -18,7 +18,7 @@ This repository is a **simple-but-smart GitHub Pages site** that serves as:
 - **🪵 A Blog** - Tutorials and long-form content
 - **🏪 A Portfolio** - Showcase of projects and work
 - **🪪 A Live Business Card** - Professional presence on the web
-- **🛝 A Playground** + **⛱️ A Sandbox** - Experiments and demos
+- **🧰 A Toolbox** - Small interactive client-side utilities (key generators, dice rollers, etc.)
 - **📺 A Starter Kit** - A real example you can clone, learn from, and customize
 
 **Most importantly**: This repo is designed to be **inspected, forked, and remixed**. Everything is visible, understandable, and ready to be made your own.
@@ -42,32 +42,43 @@ This stack hits the sweet spot: **modern structure, minimal fuss, maximum inspec
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v14 or higher)
+- [Node.js](https://nodejs.org/) (v18 or higher)
 - [npm](https://www.npmjs.com/) (comes with Node.js)
 - A text editor (VS Code, Vim, whatever you love)
+
+> **NixOS / Nix Users**: A `shell.nix` is included! Just run `nix-shell` in the project root and you're ready to go — Node.js, npm, and Dart Sass are all provided automatically.
 
 ### Installation
 
 1. **Clone this repository**
+
    ```bash
    git clone https://github.com/MarkusBitterman/MarkusBitterman.github.io.git
    cd MarkusBitterman.github.io
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
+   *Or, if using Nix:*
+
+   ```bash
+   nix-shell   # dependencies install automatically on shell entry
+   ```
+
 3. **Start the development server**
+
    ```bash
    npm start
    ```
 
 4. **Open your browser**
-   
+
    Navigate to `http://localhost:8080`
-   
+
    The site will automatically reload when you make changes!
 
 ### Building for Production
@@ -82,7 +93,7 @@ This generates the static site in the `_site/` directory, ready for deployment.
 
 ## 📂 Project Structure
 
-```
+```text
 MarkusBitterman.github.io/
 ├── src/                      # Source files
 │   ├── _includes/            # Templates and partials
@@ -94,8 +105,12 @@ MarkusBitterman.github.io/
 │   │   └── main.scss         # Main stylesheet (imports Bulma + custom styles)
 │   ├── assets/               # Static assets (images, etc.)
 │   └── index.md              # Home page
+├── .vscode/                  # VS Code workspace settings & extensions
+├── .github/workflows/        # GitHub Actions CI/CD
 ├── _site/                    # Generated site (git-ignored)
 ├── .eleventy.js              # Eleventy configuration
+├── .editorconfig             # Editor formatting rules
+├── shell.nix                 # Nix development environment
 ├── package.json              # Dependencies and scripts
 ├── .gitignore                # Git ignore rules
 └── README.md                 # This file!
@@ -108,6 +123,7 @@ MarkusBitterman.github.io/
 ### Adding a New Page
 
 1. Create a new Markdown file in `src/pages/`:
+
    ```markdown
    ---
    layout: layouts/page.njk
@@ -128,6 +144,7 @@ MarkusBitterman.github.io/
 ### Adding a Blog Post
 
 1. Create a new Markdown file in `src/posts/`:
+
    ```markdown
    ---
    title: "My First Post"
@@ -175,6 +192,7 @@ $family-sans-serif: "Your Font", sans-serif;
 ### Using Bulma Components
 
 Bulma provides many ready-to-use components. Check out:
+
 - [Bulma Documentation](https://bulma.io/documentation/)
 - Examples in `src/_includes/` templates
 
@@ -183,13 +201,65 @@ Bulma provides many ready-to-use components. Check out:
 ## 🛠️ Available Commands
 
 | Command | Description |
-|---------|-------------|
+| ------- | ----------- |
 | `npm start` | Start development server with hot reload |
 | `npm run build` | Build site for production |
 | `npm run build:eleventy` | Build HTML only (Eleventy) |
 | `npm run build:sass` | Compile Sass to CSS |
 | `npm run watch` | Watch for changes (both Eleventy and Sass) |
 | `npm run clean` | Delete the `_site/` directory |
+
+### VS Code Tasks
+
+If you're using VS Code, press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) and type "Run Task" to access these shortcuts:
+
+**Build & Validation:**
+
+- **✅ Verify Build** - Full build validation (default test task: `Ctrl+Shift+B` on test)
+- **🛠️ Build All** - Production build (default: `Ctrl+Shift+B`)
+- **🔍 Check Output** - Show build statistics
+- **📄 Build Eleventy** - HTML only
+- **🎨 Build Sass** - CSS only
+
+**Development Server:**
+
+- **▶️ Start Server** - Launch dev server at <http://localhost:8080>
+- **⏹️ Stop Server** - Kill running server
+- **🔄 Restart Server** - Stop and restart
+- **📡 Server Status** - Check if server is running
+
+**Maintenance:**
+
+- **🗑️ Clean Build** - Remove `_site/`
+- **🗑️ Clean All** - Remove `_site/`, `node_modules/`, `package-lock.json`
+- **📦 Install Dependencies** - Run `npm install`
+- **🔄 Reinstall** - Clean all + fresh install
+
+**Diagnostics:**
+
+- **📊 Project Stats** - File counts, line counts, disk usage
+- **🔍 List Pages** - Show all pages and posts
+- **🚀 Deploy Check** - Verify build is deployment-ready
+
+---
+
+## 📝 README vs Homepage
+
+This project keeps **two separate files** for different audiences:
+
+- **`README.md`** (this file) - GitHub repository documentation for developers
+  - How to install and run the project
+  - Technical details and project structure
+  - Contributing guidelines
+  - Shown on the GitHub repo page
+
+- **`src/index.md`** - Website homepage for visitors
+  - Welcome message and site navigation
+  - Links to portfolio, blog, toolbox
+  - Visitor-focused content
+  - Shown at `https://MarkusBitterman.github.io`
+
+They serve **different purposes** and should stay separate. The README is for people exploring the code; the homepage is for people visiting the site.
 
 ---
 
@@ -198,6 +268,7 @@ Bulma provides many ready-to-use components. Check out:
 ### Option 1: Manual Deploy (Simple)
 
 1. Build the site:
+
    ```bash
    npm run build
    ```
@@ -208,57 +279,34 @@ Bulma provides many ready-to-use components. Check out:
 
 ### Option 2: GitHub Actions (Automated)
 
-Create `.github/workflows/deploy.yml`:
+A GitHub Actions workflow is already included at `.github/workflows/deploy.yml`. It automatically builds and deploys the site on every push to `main`.
 
-```yaml
-name: Build and Deploy
+To use it:
 
-on:
-  push:
-    branches: [ main ]
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Build site
-        run: npm run build
-      
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
-```
-
-Push this file, and your site will automatically build and deploy on every commit to `main`!
+1. Go to your repo on GitHub → **Settings** → **Pages**
+2. Under **Source**, select **GitHub Actions**
+3. Push your changes to `main` — the site will build and deploy automatically!
 
 ---
 
 ## 🧭 Key Concepts
 
 ### Markdown-First Workflow
+
 Write content in Markdown. Templates and styling are separate. Simple and clean.
 
 ### Layouts & Templates
+
 - **Layouts** define the page structure (`base.njk`, `page.njk`, `post.njk`)
 - **Partials** are reusable components (`navbar.njk`, `footer.njk`)
 - **Front matter** (YAML at the top of files) controls behavior
 
 ### Collections
+
 Posts are automatically collected and sorted by Eleventy. See `.eleventy.js` for configuration.
 
 ### Sass Workflow
+
 Sass compiles to CSS. Bulma is imported as Sass, so you can customize variables before importing.
 
 ---
@@ -266,16 +314,19 @@ Sass compiles to CSS. Bulma is imported as Sass, so you can customize variables 
 ## 📚 Learning Resources
 
 ### Eleventy
+
 - [Official Docs](https://www.11ty.dev/docs/)
 - [Starter Projects](https://www.11ty.dev/docs/starter/)
 - [Tutorials](https://www.11ty.dev/docs/tutorials/)
 
 ### Bulma
+
 - [Documentation](https://bulma.io/documentation/)
 - [Components](https://bulma.io/documentation/components/)
 - [Customize](https://bulma.io/documentation/customize/)
 
 ### Sass
+
 - [Sass Guide](https://sass-lang.com/guide)
 - [Sass Basics](https://sass-lang.com/documentation)
 
@@ -319,6 +370,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ## 🎉 Final Thoughts
 
 This site is designed to be:
+
 - ✅ **Inspectable** - Look at the code, understand how it works
 - ✅ **Forkable** - Clone it, make it yours
 - ✅ **Learnable** - Documentation by example

@@ -1,0 +1,27 @@
+{
+  "recommendations": [
+    // NunJucks, SASS/SCSS, MarkDown
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "syler.sass-indented",
+    "glenn2223.live-sass",
+    "okitavera.vscode-nunjucks-formatter",
+    "ronnidc.nunjucks",
+    "ritwickdey.liveserver",
+    "yzhang.markdown-all-in-one",
+    "bierner.markdown-preview-github-styles",
+    "bradlc.vscode-tailwindcss",
+
+    // Editor
+    "editorconfig.editorconfig",
+    // GitHub Integration
+    "github.copilot",
+    "github.copilot-chat",
+    "github.vscode-pull-request-github",
+    "github.vscode-github-actions",
+    // Task Management
+    "emanuelebartolesi.taskdeck",
+    "actboy168.tasks"
+  ],
+  "unwantedRecommendations": []
+}

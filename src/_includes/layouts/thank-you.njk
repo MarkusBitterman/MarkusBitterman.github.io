@@ -1,0 +1,133 @@
+---
+layout: layouts/base.njk
+---
+
+{% if heroTitle %}
+{% include "partials/hero.njk" %}
+{% endif %}
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8-desktop is-offset-2-desktop">
+        <div class="content has-text-centered">
+          {{ content | safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Documentation Cards -->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2 has-text-centered mb-6">📚 Project Documentation</h2>
+
+    <div class="columns is-multiline">
+      {% for doc in documents %}
+      <div class="column is-half">
+        <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <span class="icon is-large" style="font-size: 3rem;">{{ doc.icon }}</span>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">{{ doc.title }}</p>
+                <p class="subtitle is-6"><code>{{ doc.file }}</code></p>
+              </div>
+            </div>
+
+            <div class="content">
+              <p>{{ doc.description }}</p>
+
+              <ul class="mt-3">
+                {% for highlight in doc.highlights %}
+                <li>{{ highlight }}</li>
+                {% endfor %}
+              </ul>
+
+              <div class="mt-4">
+                <a href="{{ doc.url }}" class="button is-info is-outlined" target="_blank" rel="noopener noreferrer">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>View on GitHub</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Philosophy -->
+{% if philosophy %}
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8-desktop is-offset-2-desktop">
+        <div class="box np-seal">
+          <h2 class="title is-3 has-text-centered mb-5">{{ philosophy.title }}</h2>
+          <div class="content is-medium">
+            {% for point in philosophy.points %}
+            <p>{{ point | safe }}</p>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Call to Action -->
+{% if callToAction %}
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2 has-text-centered mb-6">{{ callToAction.title }}</h2>
+
+    <div class="columns is-centered">
+      <div class="column is-8-desktop">
+        <div class="columns is-multiline">
+          {% for action in callToAction.actions %}
+          <div class="column is-half">
+            <a href="{{ action.url }}" class="button is-primary is-light is-fullwidth" target="_blank" rel="noopener noreferrer">
+              <span class="icon is-large" style="font-size: 2rem;">{{ action.icon }}</span>
+              <span>{{ action.text }}</span>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Final Message -->
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6-desktop is-offset-3-desktop">
+        <div class="notification is-warning is-light has-text-centered">
+          <p class="is-size-5">
+            <strong>This site is a love letter</strong> to the early web, retro gaming, peer support values, and the belief that we can build things that are both useful and beautiful.
+          </p>
+          <p class="mt-3 has-text-weight-semibold">
+            Liberty is the light I carry, mindfulness the hand that keeps it steady.</br>
+            I do not fight the darkness; I outlast it. 💛
+          </p>
+          <p class="mt-3 is-italic">
+            Be free enough to choose, and aware enough to choose well.
+          </p>
+          <p class="mt-3">
+            — Markus Bitterman<br>
+            <small>Iowa City, Iowa • February 2026</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

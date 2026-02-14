@@ -1,0 +1,182 @@
+---
+layout: layouts/base.njk
+---
+
+{% include "partials/hero.njk" %}
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <p class="is-size-6 has-text-grey mb-5"><em>Last updated: {{ lastUpdated }}</em></p>
+
+        <div class="content is-medium mb-6">
+          {{ content | safe }}
+        </div>
+
+        {# Current Projects #}
+        <div class="box">
+          <h2 class="title is-3">
+            <span class="icon has-text-info"><i class="fas fa-rocket"></i></span>
+            Current Projects
+          </h2>
+
+          {% for project in currentProjects %}
+          {% if not loop.first %}<hr>{% endif %}
+          <article class="media">
+            <figure class="media-left">
+              <span class="icon is-large has-text-info"><i class="{{ project.icon }} fa-2x"></i></span>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <h3 class="title is-4"><a href="{{ project.url }}">{{ project.name }}</a></h3>
+                <p>{{ project.description }}</p>
+              </div>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+
+        {# Day Job #}
+        {% if dayJob %}
+        <div class="box">
+          <h2 class="title is-3">
+            <span class="icon has-text-success"><i class="fas fa-hands-helping"></i></span>
+            Day Job
+          </h2>
+          <div class="content">
+            <p>{{ dayJob.description }}</p>
+            <div class="notification is-success is-light">
+              <p><strong>The bridge:</strong> {{ dayJob.bridge }}</p>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Learning & Exploring #}
+        {% if learning %}
+        <div class="box">
+          <h2 class="title is-3">
+            <span class="icon has-text-link"><i class="fas fa-book-open"></i></span>
+            Learning & Exploring
+          </h2>
+          <div class="content">
+            <div class="columns is-multiline">
+              {% for topic in learning %}
+              <div class="column is-6">
+                <div class="notification is-light">
+                  <h4 class="title is-5"><span class="icon"><i class="{{ topic.icon }}"></i></span> {{ topic.title }}</h4>
+                  <p>{{ topic.detail }}</p>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Writing & Documenting #}
+        {% if writing %}
+        <div class="box">
+          <h2 class="title is-3">
+            <span class="icon has-text-warning"><i class="fas fa-pen-fancy"></i></span>
+            Writing & Documenting
+          </h2>
+          <div class="content">
+            <ul>
+              {% for item in writing %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Goals #}
+        {% if goals %}
+        <div class="box">
+          <h2 class="title is-3">
+            <span class="icon has-text-danger"><i class="fas fa-bullseye"></i></span>
+            Goals
+          </h2>
+          <div class="content">
+            {% if goals.shortTerm %}
+            <h4 class="title is-5">Short-term</h4>
+            <div class="field is-grouped is-grouped-multiline">
+              {% for item in goals.shortTerm %}
+              <div class="control"><span class="tag is-{{ item.color }} is-light is-medium">{{ item.name }}</span></div>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if goals.mediumTerm %}
+            <h4 class="title is-5 mt-4">Medium-term</h4>
+            <ul>
+              {% for item in goals.mediumTerm %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+            {% if goals.longTerm %}
+            <h4 class="title is-5 mt-4">Long-term</h4>
+            <ul>
+              {% for item in goals.longTerm %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+        {# Tools Table #}
+        {% if tools %}
+        <div class="box">
+          <h2 class="title is-3">
+            <span class="icon has-text-link"><i class="fas fa-wrench"></i></span>
+            Tools I'm Using
+          </h2>
+          <div class="content">
+            <table class="table is-fullwidth is-striped">
+              <tbody>
+                {% for tool in tools %}
+                <tr><td><strong>{{ tool.name }}</strong></td><td>{{ tool.value }}</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+
+        {# What's on My Mind #}
+        {% if mindNote %}
+        <div class="notification is-link is-light">
+          <h3 class="title is-4">💭 What's on My Mind</h3>
+          <div class="content">
+            {{ mindNote | safe }}
+          </div>
+        </div>
+        {% endif %}
+
+        {# Contact #}
+        <div class="content has-text-centered mt-6">
+          <h3 class="title is-4">📫 Get in Touch</h3>
+          <p>Working on something similar? Want to collaborate? Have questions about the stack?</p>
+          <div class="buttons is-centered">
+            <a href="https://github.com/MarkusBitterman" class="button is-dark" target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>GitHub</span>
+            </a>
+            <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io/issues" class="button is-link is-outlined" target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="fas fa-comment-dots"></i></span>
+              <span>Open an Issue</span>
+            </a>
+          </div>
+        </div>
+
+        <p class="has-text-grey has-text-centered mt-6 is-size-7"><em>This page is inspired by <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">Derek Sivers' /now page movement</a>. The idea: share what you're focused on right now, not your whole life story.</em></p>
+      </div>
+    </div>
+  </div>
+</section>

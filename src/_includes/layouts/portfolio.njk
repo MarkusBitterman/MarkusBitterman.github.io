@@ -1,0 +1,97 @@
+---
+layout: layouts/base.njk
+---
+
+{% include "partials/hero.njk" %}
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-2">Featured Projects</h2>
+    <p class="subtitle is-5 mb-6">{{ projectsIntro }}</p>
+
+    <div class="columns is-multiline">
+      {% for project in projects %}
+      <div class="column is-6">
+        <div class="card">
+          <div class="card-header">
+            <p class="card-header-title">
+              <span class="icon mr-2"><i class="{{ project.icon }}"></i></span>
+              {{ project.emoji }} {{ project.name }}
+            </p>
+            <span class="card-header-icon">
+              <span class="tag is-{{ project.statusColor }}">{{ project.status }}</span>
+            </span>
+          </div>
+          <div class="card-content">
+            <div class="content">
+              <p>{{ project.description | safe }}</p>
+              <div class="tags">
+                {% for tag in project.tags %}
+                <span class="tag is-{{ tag.color }} is-light">{{ tag.name }}</span>
+                {% endfor %}
+              </div>
+              <ul>
+                {% for item in project.features %}
+                <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          <footer class="card-footer">
+            {% for link in project.links %}
+            <a href="{{ link.url }}" class="card-footer-item"{% if link.external %} target="_blank" rel="noopener noreferrer"{% endif %}>
+              <span class="icon"><i class="{{ link.icon }}"></i></span>
+              <span>{{ link.label }}</span>
+            </a>
+            {% endfor %}
+          </footer>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section has-background-light">
+  <div class="container">
+    <h2 class="title is-2">Skills & Technologies</h2>
+
+    <div class="columns is-multiline">
+      {% for group in skills %}
+      <div class="column is-4">
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-{{ group.color }}"><i class="{{ group.icon }}"></i></span>
+            {{ group.group }}
+          </h3>
+          <div class="content">
+            <ul>
+              {% for item in group.items %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content has-text-centered">
+      <h2 class="title is-3">Open Source Philosophy 🌟</h2>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="notification is-primary is-light">
+            <p class="is-size-5">{{ philosophy }}</p>
+          </div>
+        </div>
+      </div>
+      <p class="is-size-5 mt-4">
+        Interested in collaborating? Check my <a href="/now/">Now page</a> to see what I'm currently working on, or <a href="https://github.com/MarkusBitterman" target="_blank" rel="noopener noreferrer">find me on GitHub</a>.
+      </p>
+    </div>
+  </div>
+</section>

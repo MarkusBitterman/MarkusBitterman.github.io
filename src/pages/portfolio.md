@@ -1,89 +1,155 @@
 ---
-layout: layouts/page.njk
+layout: layouts/portfolio.njk
 title: "Portfolio"
-description: "A showcase of Markus Bitterman's projects and work"
-hero: true
-heroTitle: "🏪 Portfolio"
-heroSubtitle: "Projects, Code, and Creative Work"
+description: "A showcase of my open-source projects in peer support, privacy-first computing, and web development"
 permalink: /portfolio/index.html
+heroTitle: "Portfolio"
+heroSubtitle: "Open-source projects in peer support, privacy, and web development"
+heroClass: "is-success"
+heroShader: "portfolio"
+projectsIntro: "Each project reflects a core value: transparency, community ownership, and building tools that respect the people who use them."
+projects:
+  - icon: "fas fa-heart"
+    emoji: "🌱"
+    name: "Corridor Peer Pathways"
+    status: "Active"
+    statusColor: "success"
+    description: "An open-source, community-maintained peer support resource and living map for mental health & crisis recovery across Johnson and Linn Counties in Eastern Iowa."
+    tags:
+      - name: "Peer Support"
+        color: "success"
+      - name: "Community"
+        color: "info"
+      - name: "Markdown"
+        color: "warning"
+      - name: "Unlicense"
+        color: "light"
+    features:
+      - "70+ verified organizations across Johnson & Linn Counties"
+      - "Field-tested peer support frameworks"
+      - "Community-maintained and always evolving"
+      - "Unlicensed — free as in freedom"
+    links:
+      - url: "https://github.com/MarkusBitterman/Corridor-Peer-Pathways"
+        label: "View on GitHub"
+        style: "success"
+        icon: "fab fa-github"
+        external: true
+  - icon: "fas fa-lock"
+    emoji: "🔐"
+    name: "HALLway"
+    status: "Active"
+    statusColor: "success"
+    description: "A NixOS-based operating system stack built around privacy-first, local-first computing. Your digital life should live on your hardware, under your rules."
+    tags:
+      - name: "NixOS"
+        color: "dark"
+      - name: "Nix Flakes"
+        color: "info"
+      - name: "Home Manager"
+        color: "warning"
+      - name: "AGPL-3.0"
+        color: "light"
+    features:
+      - "Fully declarative NixOS system configuration"
+      - "Home Manager for user-level dotfiles"
+      - "agenix for secrets management"
+      - "ZFS-based storage architecture"
+    links:
+      - url: "https://github.com/MarkusBitterman/HALLway"
+        label: "View on GitHub"
+        style: "dark"
+        icon: "fab fa-github"
+        external: true
+  - icon: "fas fa-camera"
+    emoji: "🤳🏻"
+    name: "socialize.sh"
+    status: "Early Stage"
+    statusColor: "warning"
+    description: "A photography and metadata analysis project exploring what your camera app's Social Media depth features really do with your photos."
+    tags:
+      - name: "Photography"
+        color: "info"
+      - name: "Metadata"
+        color: "warning"
+      - name: "Privacy"
+        color: "danger"
+      - name: "MIT"
+        color: "light"
+    features:
+      - "EXIF metadata deep-dive analysis"
+      - "Social media compression comparison"
+      - "Privacy implications of photo sharing"
+      - "Educational resource for photographers"
+    links:
+      - url: "https://github.com/MarkusBitterman/socialize.sh"
+        label: "View on GitHub"
+        style: "warning"
+        icon: "fab fa-github"
+        external: true
+  - icon: "fas fa-globe"
+    emoji: "🧾✨"
+    name: "This Site"
+    status: "Active"
+    statusColor: "success"
+    description: "A living portfolio, blog, devlog, toolbox, and starter kit — built with Eleventy, Bulma, and Sass. Inspectable, forkable, and designed to be learned from."
+    tags:
+      - name: "Eleventy"
+        color: "link"
+      - name: "Nunjucks"
+        color: "info"
+      - name: "Bulma"
+        color: "success"
+      - name: "Sass"
+        color: "warning"
+    features:
+      - "Eleventy + Nunjucks for clean, fast static pages"
+      - "Bulma CSS framework — no JavaScript required"
+      - "Sass-powered theming and customization"
+      - "Reproducible dev environment with NixOS shell.nix"
+    links:
+      - url: "https://github.com/MarkusBitterman/MarkusBitterman.github.io"
+        label: "View on GitHub"
+        style: "link"
+        icon: "fab fa-github"
+        external: true
+      - url: "/"
+        label: "You're Here!"
+        style: "info is-outlined"
+        icon: "fas fa-home"
+        external: false
+skills:
+  - group: "Languages & Markup"
+    color: "info"
+    icon: "fas fa-code"
+    items:
+      - "Nix"
+      - "Bash / Shell"
+      - "HTML / Nunjucks"
+      - "CSS / Sass"
+      - "Markdown"
+      - "YAML"
+  - group: "Tools & Platforms"
+    color: "success"
+    icon: "fas fa-tools"
+    items:
+      - "NixOS"
+      - "Nix Flakes"
+      - "Home Manager"
+      - "Eleventy (11ty)"
+      - "Git & GitHub"
+      - "GitHub Actions"
+  - group: "Domains"
+    color: "warning"
+    icon: "fas fa-lightbulb"
+    items:
+      - "Peer Support"
+      - "Mental Health Tech"
+      - "Privacy & Digital Autonomy"
+      - "Static Site Generation"
+      - "System Configuration"
+      - "Documentation"
+philosophy: "I believe the best software is software you can read. Every project I build is designed to be inspectable, forkable, and improvable. If you can't understand how it works, it's not done yet."
 ---
 
-## Featured Projects
-
-Here's a selection of projects I've built, contributed to, or am currently working on.
-
----
-
-### 🧾✨ This Very Site!
-
-**MarkusBitterman.github.io** - A living GitHub Pages site built to be cloned, learned from, and remixed.
-
-**Stack**: Eleventy, Nunjucks, Bulma, Sass  
-**Features**:
-- Markdown-first content workflow
-- Bulma-styled responsive design
-- Sass customization
-- Fully inspectable and forkable
-- Documentation by example
-
-**Links**: 
-- [Live Site](https://MarkusBitterman.github.io)
-- [GitHub Repo](https://github.com/MarkusBitterman/MarkusBitterman.github.io)
-
-**Status**: 🚀 Active & evolving
-
----
-
-### 📦 [Your Project Name]
-
-*Coming soon! More projects will be showcased here as they're completed.*
-
-For now, check out my [GitHub profile](https://github.com/MarkusBitterman) to see what I'm working on.
-
----
-
-## Skills & Technologies
-
-### Languages & Frameworks
-- JavaScript / TypeScript
-- HTML / CSS / Sass
-- Node.js
-- Python
-- Git & GitHub
-
-### Tools & Platforms
-- Eleventy (11ty)
-- Bulma CSS
-- VS Code OSS
-- NixOS
-- GitHub Pages
-- CI/CD workflows
-
-### Interests & Learning
-- Static site generation
-- JAMstack architecture
-- Developer documentation
-- Open source collaboration
-- DevOps & automation
-
----
-
-## Open Source Philosophy 🌟
-
-I believe in:
-- **Learning in public** - Sharing the journey, not just the destination
-- **Building in the open** - Making code inspectable and forkable
-- **Documentation by example** - Real projects are better teachers than tutorials
-- **Community over competition** - We all rise together
-
----
-
-## Work With Me 🤝
-
-Interested in collaborating? Have a project idea? Want to discuss tech?
-
-Feel free to reach out via [GitHub](https://github.com/MarkusBitterman) or check out my [Now page](/now/) to see what I'm currently working on.
-
----
-
-*This portfolio is a living document. Check back regularly for updates!*
+These are the projects I'm currently building and maintaining. Everything here is open-source and designed to be inspectable, forkable, and useful.

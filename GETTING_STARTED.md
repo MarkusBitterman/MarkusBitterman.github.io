@@ -12,6 +12,7 @@ Welcome! This guide will help you get this site up and running, understand how i
 - [Customizing Styles](#customizing-styles)
 - [Deploying to GitHub Pages](#deploying-to-github-pages)
 - [Troubleshooting](#troubleshooting)
+- [Using VS Code Tasks](#using-vs-code-tasks)
 
 ---
 
@@ -19,17 +20,19 @@ Welcome! This guide will help you get this site up and running, understand how i
 
 Before you begin, make sure you have:
 
-- **Node.js** (v14 or higher) - [Download here](https://nodejs.org/)
+- **Node.js** (v18 or higher) - [Download here](https://nodejs.org/)
 - **npm** (comes with Node.js)
 - **Git** - [Download here](https://git-scm.com/)
 - A **text editor** (VS Code, Sublime Text, Vim, etc.)
 - A **GitHub account** (for deployment)
 
+> **NixOS / Nix Users**: You can skip installing Node.js and npm manually. A `shell.nix` file is included — just run `nix-shell` in the project root and everything you need is provided.
+
 ### Verify Your Installation
 
 ```bash
-node --version  # Should show v14 or higher
-npm --version   # Should show 6.x or higher
+node --version  # Should show v18 or higher
+npm --version   # Should show 8.x or higher
 git --version   # Should show 2.x or higher
 ```
 
@@ -50,7 +53,15 @@ cd MarkusBitterman.github.io
 npm install
 ```
 
+**Or, if you're using Nix/NixOS:**
+
+```bash
+nix-shell
+# Dependencies install automatically when the shell activates
+```
+
 This will install:
+
 - Eleventy (static site generator)
 - Bulma (CSS framework)
 - Sass (CSS preprocessor)
@@ -62,6 +73,7 @@ npm start
 ```
 
 This will:
+
 - Compile your Sass to CSS
 - Build your site with Eleventy
 - Start a local server at `http://localhost:8080`
@@ -77,7 +89,7 @@ Navigate to `http://localhost:8080` and you should see your site!
 
 ### Directory Layout
 
-```
+```text
 MarkusBitterman.github.io/
 ├── src/                           # All source files
 │   ├── _includes/                 # Templates and reusable components
@@ -113,17 +125,17 @@ MarkusBitterman.github.io/
 1. **Markdown Files** (`src/pages/`, `src/posts/`, `src/index.md`)
    - Where you write your content
    - Front matter (YAML) at the top controls behavior
-   
+
 2. **Templates** (`src/_includes/`)
    - Nunjucks templates that wrap your content
    - Layouts define the page structure
    - Partials are reusable components
-   
+
 3. **Styles** (`src/styles/`)
    - Sass files that compile to CSS
    - Imports and customizes Bulma
    - Adds custom styling
-   
+
 4. **Build Output** (`_site/`)
    - Generated static HTML/CSS
    - Ready to deploy
@@ -163,7 +175,8 @@ console.log("Hello, world!");
 ```
 
 Check out more on my [about page](/about/)!
-```
+
+```markdown
 
 ### Step 2: Add to Navigation (Optional)
 
@@ -217,7 +230,8 @@ def hello():
 ```
 
 More content here...
-```
+
+```markdown
 
 ### Step 2: View Your Post
 
@@ -266,6 +280,7 @@ $link: #3273dc;
 Bulma provides ready-to-use components. Examples:
 
 **Button:**
+
 ```html
 <a href="/about/" class="button is-primary is-large">
   Learn More
@@ -273,6 +288,7 @@ Bulma provides ready-to-use components. Examples:
 ```
 
 **Card:**
+
 ```html
 <div class="card">
   <div class="card-content">
@@ -286,6 +302,7 @@ Bulma provides ready-to-use components. Examples:
 ```
 
 **Notification:**
+
 ```html
 <div class="notification is-info">
   This is an info notification!
@@ -305,6 +322,7 @@ The `.github/workflows/deploy.yml` file is already set up!
 **Steps:**
 
 1. **Push your code to GitHub:**
+
    ```bash
    git add .
    git commit -m "Initial site setup"
@@ -315,12 +333,13 @@ The `.github/workflows/deploy.yml` file is already set up!
    - Go to your repo on GitHub
    - Settings → Pages
    - Source: GitHub Actions
-   
+
 3. **Done!** Your site will build and deploy automatically on every push.
 
 ### Option 2: Manual Deployment
 
 1. **Build the site:**
+
    ```bash
    npm run build
    ```
@@ -336,6 +355,7 @@ The `.github/workflows/deploy.yml` file is already set up!
 **Problem:** Port 8080 already in use
 
 **Solution:** Kill the process or use a different port:
+
 ```bash
 npx eleventy --serve --port=3000
 ```
@@ -344,7 +364,8 @@ npx eleventy --serve --port=3000
 
 **Problem:** CSS file not found
 
-**Solution:** 
+**Solution:**
+
 1. Make sure Sass compiled: `npm run build:sass`
 2. Check `_site/css/main.css` exists
 3. Clear browser cache
@@ -352,6 +373,7 @@ npx eleventy --serve --port=3000
 ### Changes Not Showing
 
 **Solution:**
+
 1. Make sure dev server is running
 2. Check for syntax errors in terminal
 3. Hard refresh: Ctrl+Shift+R (Windows/Linux) or Cmd+Shift+R (Mac)
@@ -361,6 +383,7 @@ npx eleventy --serve --port=3000
 **Problem:** "Layout does not exist"
 
 **Solution:** Check front matter in your Markdown:
+
 - Use `layouts/page.njk`, not `layouts/page`
 - Layouts are relative to `src/_includes/`
 
@@ -369,9 +392,79 @@ npx eleventy --serve --port=3000
 **Problem:** npm install fails
 
 **Solution:**
+
 1. Delete `node_modules/` and `package-lock.json`
 2. Run `npm install` again
-3. Make sure Node.js is v14 or higher
+3. Make sure Node.js is v18 or higher
+
+---
+
+## 🎮 Using VS Code Tasks
+
+If you're using VS Code, you can use keyboard shortcuts instead of typing commands:
+
+### Quick Access
+
+Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac), then type "Run Task" to see all available tasks.
+
+**Or use default shortcuts:**
+
+- `Ctrl+Shift+B` - Build All (default build task)
+- `Ctrl+Shift+T` then `Ctrl+Shift+B` - Verify Build (default test task)
+
+### Available Tasks
+
+#### 🛠️ Build & Validation
+
+- **✅ Verify Build** - Run full build to check for errors
+- **🛠️ Build All** - Build Sass + Eleventy for production
+- **📄 Build Eleventy** - Build HTML only
+- **🎨 Build Sass** - Compile CSS only
+- **🔍 Check Output** - View build statistics and file counts
+
+#### 🚀 Development Server
+
+- **▶️ Start Server** - Launch dev server at <http://localhost:8080> with hot reload
+- **⏹️ Stop Server** - Stop the running server
+- **🔄 Restart Server** - Restart the server (useful after config changes)
+- **📡 Server Status** - Check if server is running
+
+#### 🧹 Maintenance
+
+- **🗑️ Clean Build** - Delete `_site/` directory
+- **🗑️ Clean All** - Remove `_site/`, `node_modules/`, and `package-lock.json`
+- **📦 Install Dependencies** - Run `npm install`
+- **🔄 Reinstall** - Clean everything and reinstall from scratch
+
+#### 📊 Diagnostics
+
+- **📊 Project Stats** - See file counts, line counts, and disk usage
+- **🔍 List Pages** - Show all pages and posts in the project
+- **🚀 Deploy Check** - Verify the build is ready for deployment
+
+### Task Workflow Examples
+
+#### Starting fresh for the day
+
+1. Run Task: ▶️ Start Server
+2. Make changes to your files
+3. Browser auto-reloads!
+
+#### Build stopped working
+
+1. Run Task: 🗑️ Clean Build
+2. Run Task: 🛠️ Build All
+3. Run Task: ▶️ Start Server
+
+#### Something is really broken
+
+1. Run Task: 🔄 Reinstall (cleans everything + fresh npm install)
+2. Run Task: ▶️ Start Server
+
+#### Before deploying
+
+1. Run Task: 🚀 Deploy Check (verifies everything is ready)
+2. Push to GitHub
 
 ---
 
@@ -389,11 +482,11 @@ Now that you have the basics:
 
 ## Getting Help
 
-- **Eleventy Docs:** https://www.11ty.dev/docs/
-- **Bulma Docs:** https://bulma.io/documentation/
-- **Sass Guide:** https://sass-lang.com/guide
-- **Open an Issue:** https://github.com/MarkusBitterman/MarkusBitterman.github.io/issues
+- **Eleventy Docs:** <https://www.11ty.dev/docs/>
+- **Bulma Docs:** <https://bulma.io/documentation/>
+- **Sass Guide:** <https://sass-lang.com/guide>
+- **Open an Issue:** <https://github.com/MarkusBitterman/MarkusBitterman.github.io/issues>
 
 ---
 
-**Happy building! 🚀**
+Happy building! 🚀
