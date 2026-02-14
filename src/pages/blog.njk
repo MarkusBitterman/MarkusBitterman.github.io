@@ -2,17 +2,19 @@
 layout: layouts/base.njk
 title: "Blog & Devlog"
 description: "Thoughts, tutorials, devlogs, and journal entries"
-hero: true
-heroTitle: "📰 Blog & Devlog"
-heroSubtitle: "Thoughts • Tutorials • Progress Updates"
 permalink: /blog/index.html
+heroTitle: "Blog & Devlog"
+heroSubtitle: "Thoughts • Tutorials • Progress Updates"
+heroClass: "is-info"
+heroShader: "blog"
 ---
 
-<section class="hero is-medium is-info">
+<section class="hero is-medium np-hero {{ heroClass }}">
+  <canvas class="shader-canvas" data-shader="{{ heroShader }}" aria-hidden="true"></canvas>
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-1">📰 Blog & Devlog</h1>
-      <p class="subtitle is-3">Thoughts • Tutorials • Progress Updates</p>
+      <h1 class="title is-1 np-stripes">{{ heroTitle }}</h1>
+      <p class="subtitle is-3">{{ heroSubtitle }}</p>
     </div>
   </div>
 </section>
@@ -21,30 +23,78 @@ permalink: /blog/index.html
   <div class="container">
     <div class="content">
       <p class="is-size-5 mb-6">
-        Welcome to my blog and devlog! Here you'll find thoughts, tutorials, progress updates, 
-        and journal entries. In the spirit of the classic Unix "finger file" tradition, 
+        Welcome to my blog and devlog! Here you'll find thoughts, tutorials, progress updates,
+        and journal entries. In the spirit of the classic Unix "finger file" tradition,
         this is where I share what I'm working on and what I'm learning.
+      </p>
+      <p class="is-size-6 mb-4 has-text-grey-dark">
+        <strong>💡 Tag filtering:</strong> Click tags to toggle them on/off. Posts matching <em>any</em> selected tag will show. Numbers update as you filter. Hit Reset to clear all selections.
       </p>
     </div>
 
-    {% if collections.posts.length > 0 %}
-    <div class="columns is-multiline">
-      {% for post in collections.posts %}
-      <div class="column is-12">
-        <div class="card">
+    {% set postList = collections.posts %}
+    {% if postList | length > 0 %}
+
+    {# ── Tag filter bar ── #}
+    {% set allTags = [] %}
+    {% for post in postList %}
+      {% for tag in post.data.tags %}
+        {% if tag != "posts" and tag not in allTags %}
+          {% set allTags = (allTags.push(tag), allTags) %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    {% if allTags | length > 0 %}
+    <div class="buttons mb-5" id="tag-filters">
+      <button class="button is-small tag-filter tag-filter-all is-active" data-tag="all">
+        <span class="icon is-small"><i class="fas fa-layer-group"></i></span>
+        <span>All</span>
+        <span class="tag-count" data-count="{{ postList | length }}">({{ postList | length }})</span>
+      </button>
+      <button class="button is-small tag-filter tag-filter-reset is-hidden" id="reset-filters">
+        <span class="icon is-small"><i class="fas fa-undo"></i></span>
+        <span>Reset</span>
+      </button>
+      {% for tag in allTags | sort %}
+      {% set tagCount = 0 %}
+      {% for post in postList %}
+        {% if tag in post.data.tags %}
+          {% set tagCount = tagCount + 1 %}
+        {% endif %}
+      {% endfor %}
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="{{ tag }}" data-count="{{ tagCount }}">
+        <span class="tag-label">{{ tag }}</span>
+        <span class="tag-count">({{ tagCount }})</span>
+      </button>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="columns is-multiline" id="post-list">
+      {% for post in postList %}
+      <div class="column is-12 post-card" data-tags="{% for tag in post.data.tags %}{% if tag != 'posts' %}{{ tag }}|{% endif %}{% endfor %}">
+        <div class="card mb-4">
           <div class="card-content">
             <div class="media">
+              <div class="media-left">
+                <span class="icon is-large has-text-info">
+                  <i class="fas fa-file-alt fa-2x"></i>
+                </span>
+              </div>
               <div class="media-content">
                 <p class="title is-4">
-                  <a href="{{ post.url }}">{{ post.data.title }}</a>
+                  <a href="{{ post.url }}" class="has-text-dark">{{ post.data.title }}</a>
                 </p>
-                <p class="subtitle is-6">
-                  <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+                <p class="subtitle is-6 has-text-grey">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                    <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+                  </span>
                   {% if post.data.tags %}
                   <span class="ml-3">
                     {% for tag in post.data.tags %}
                       {% if tag != "posts" %}
-                      <span class="tag is-info is-light">{{ tag }}</span>
+                      <span class="tag is-rounded tag-colored" data-tag-name="{{ tag }}">{{ tag }}</span>
                       {% endif %}
                     {% endfor %}
                   </span>
@@ -54,12 +104,14 @@ permalink: /blog/index.html
             </div>
             <div class="content">
               {% if post.data.description %}
-                {{ post.data.description }}
+                <p>{{ post.data.description }}</p>
               {% else %}
-                {{ post.templateContent | excerpt }}
+                <p>{{ post.templateContent | excerpt }}</p>
               {% endif %}
-              <br>
-              <a href="{{ post.url }}" class="button is-light is-small mt-2">Read more →</a>
+              <a href="{{ post.url }}" class="button is-info is-outlined is-small">
+                <span>Read more</span>
+                <span class="icon is-small"><i class="fas fa-arrow-right"></i></span>
+              </a>
             </div>
           </div>
         </div>
@@ -73,3 +125,176 @@ permalink: /blog/index.html
     {% endif %}
   </div>
 </section>
+
+<script src="/js/tag-colors.js"></script>
+<script>
+(function() {
+  // Use shared TagColors utility
+  var sanitizeTag = window.TagColors.sanitize;
+  var hashTagColor = window.TagColors.hash;
+  var hashTagBorderColor = window.TagColors.border;
+
+  // ── Style all filter buttons ──
+  var filterButtons = document.querySelectorAll(".tag-filter-btn");
+  filterButtons.forEach(function(btn) {
+    var displayTag = btn.getAttribute("data-tag");
+    var bgColor = hashTagColor(displayTag);
+    var borderColor = hashTagBorderColor(displayTag);
+
+    btn.setAttribute("data-bg-color", bgColor);
+    btn.setAttribute("data-border-color", borderColor);
+    btn.setAttribute("data-clean-tag", sanitizeTag(displayTag));
+
+    // Base styling
+    btn.style.fontFamily = 'var(--np-font-code)';
+    btn.style.fontSize = '0.85rem';
+    btn.style.fontWeight = '600';
+    btn.style.letterSpacing = '0.02em';
+    btn.style.backgroundColor = 'transparent';
+    btn.style.borderWidth = '2px';
+    btn.style.borderStyle = 'solid';
+    btn.style.borderColor = borderColor;
+    btn.style.color = borderColor;
+    btn.style.transition = 'all 0.15s ease';
+    btn.style.textTransform = 'uppercase';
+  });
+
+  // Style the All and Reset buttons
+  var allBtn = document.querySelector(".tag-filter-all");
+  var resetBtn = document.querySelector(".tag-filter-reset");
+  [allBtn, resetBtn].forEach(function(btn) {
+    if (btn) {
+      btn.style.fontFamily = 'var(--np-font-code)';
+      btn.style.fontSize = '0.85rem';
+      btn.style.fontWeight = '700';
+      btn.style.letterSpacing = '0.03em';
+      btn.style.textTransform = 'uppercase';
+      btn.style.backgroundColor = 'var(--np-power-gold)';
+      btn.style.borderWidth = '2px';
+      btn.style.borderStyle = 'solid';
+      btn.style.borderColor = 'var(--np-feather-rust)';
+      btn.style.color = 'var(--np-ink-black)';
+      btn.style.transition = 'all 0.15s ease';
+    }
+  });
+
+  var filters = document.getElementById("tag-filters");
+  if (!filters) return;
+
+  var cards = document.querySelectorAll(".post-card");
+  var activeTags = new Set(); // Track sanitized clean tags
+
+  function updateDisplay() {
+    var visibleCards = [];
+
+    // Show/hide cards based on active tags
+    cards.forEach(function(card) {
+      var cardTagsRaw = (card.getAttribute("data-tags") || "").split("|").filter(function(t) { return t.trim(); });
+      var cardTags = cardTagsRaw.map(sanitizeTag);
+      var isVisible = false;
+
+      if (activeTags.size === 0) {
+        isVisible = true;
+      } else {
+        cardTags.forEach(function(tag) {
+          if (activeTags.has(tag)) {
+            isVisible = true;
+          }
+        });
+      }
+
+      card.style.display = isVisible ? "" : "none";
+      if (isVisible) visibleCards.push(card);
+    });
+
+    // Update counts for each tag button
+    filterButtons.forEach(function(btn) {
+      var cleanTag = btn.getAttribute("data-clean-tag");
+      var count = 0;
+
+      visibleCards.forEach(function(card) {
+        var cardTagsRaw = (card.getAttribute("data-tags") || "").split("|").filter(function(t) { return t.trim(); });
+        var cardTags = cardTagsRaw.map(sanitizeTag);
+        if (cardTags.indexOf(cleanTag) !== -1) {
+          count++;
+        }
+      });
+
+      var countSpan = btn.querySelector(".tag-count");
+      if (countSpan) {
+        countSpan.textContent = "(" + count + ")";
+      }
+
+      // Fade out and disable buttons with 0 count (unless they're active)
+      if (count === 0 && !activeTags.has(cleanTag)) {
+        btn.style.opacity = '0.3';
+        btn.style.pointerEvents = 'none';
+      } else {
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      }
+    });
+
+    // Update "All" button count
+    var allCountSpan = allBtn.querySelector(".tag-count");
+    if (allCountSpan) {
+      allCountSpan.textContent = "(" + visibleCards.length + ")";
+    }
+
+    // Show/hide reset button
+    if (activeTags.size > 0) {
+      allBtn.classList.add("is-hidden");
+      resetBtn.classList.remove("is-hidden");
+    } else {
+      allBtn.classList.remove("is-hidden");
+      resetBtn.classList.add("is-hidden");
+    }
+  }
+
+  // Click handler for tag buttons
+  filterButtons.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      var cleanTag = btn.getAttribute("data-clean-tag");
+      var bgColor = btn.getAttribute("data-bg-color");
+      var borderColor = btn.getAttribute("data-border-color");
+
+      // Toggle this tag
+      if (activeTags.has(cleanTag)) {
+        activeTags.delete(cleanTag);
+        // Revert to outlined style
+        btn.style.backgroundColor = 'transparent';
+        btn.style.color = borderColor;
+        btn.style.borderColor = borderColor;
+      } else {
+        activeTags.add(cleanTag);
+        // Apply active/filled style
+        btn.style.backgroundColor = bgColor;
+        btn.style.color = '#ffffff';
+        btn.style.borderColor = borderColor;
+      }
+
+      updateDisplay();
+    });
+  });
+
+  // Reset button handler
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function() {
+      activeTags.clear();
+
+      // Reset all tag button styles
+      filterButtons.forEach(function(btn) {
+        var borderColor = btn.getAttribute("data-border-color");
+        btn.style.backgroundColor = 'transparent';
+        btn.style.color = borderColor;
+        btn.style.borderColor = borderColor;
+      });
+
+      updateDisplay();
+    });
+  }
+
+  // Initial display
+  updateDisplay();
+})();
+</script>

@@ -5,9 +5,9 @@ layout: layouts/post.njk
 description: "Exploring the history of Unix finger files and how they inspired modern devlogs, status pages, and the practice of working in public."
 tags:
   - posts
-  - history
-  - devlog
-  - culture
+  - 📜 history
+  - 📓 devlog
+  - 🌐 culture
 ---
 
 ## A Brief History of the .plan File 📜
@@ -46,7 +46,7 @@ These updates were **transparent, technical, and authentic**. No marketing speak
 Carmack's .plan files showed:
 
 1. **Working in public** - Sharing both successes and struggles
-2. **Technical depth** - Not dumbing things down for the audience  
+2. **Technical depth** - Not dumbing things down for the audience
 3. **Regular updates** - Keeping people informed of progress
 4. **Personal voice** - Writing as himself, not as a company
 
@@ -57,15 +57,19 @@ This was revolutionary. People could follow along with one of the most important
 The finger protocol is mostly obsolete now, but its spirit continues in:
 
 ### Developer Blogs & Devlogs
+
 Modern devlogs carry forward the tradition of sharing work-in-progress, technical details, and honest reflections.
 
 ### /now Pages
+
 The [/now page movement](https://nownownow.com/about) (started by Derek Sivers) asks: "What are you focused on right now?" — a direct descendant of the .plan file concept.
 
 ### Working in Public
+
 Developers streaming on Twitch, sharing on Twitter, writing technical blogs, and maintaining public repos — all echo the transparency of those early .plan files.
 
 ### Status Pages & Journals
+
 Personal status pages, digital gardens, and public journals all trace their lineage back to "here's what I'm working on."
 
 ## Why This Matters Today 🎯
@@ -73,15 +77,19 @@ Personal status pages, digital gardens, and public journals all trace their line
 In an age of carefully curated social media presences, the .plan file tradition reminds us:
 
 ### Authenticity Over Polish
+
 You don't need perfect prose or professional editing. Just share what you're actually doing.
 
 ### Process Over Product
+
 The journey matters as much as the destination. Show the messy middle, not just the highlight reel.
 
 ### Learning in Public
+
 When you document your learning and problem-solving, you help others facing similar challenges.
 
 ### Community Through Transparency
+
 Sharing your work builds connections with people interested in similar things.
 
 ## This Site as a .plan File 📝
@@ -95,6 +103,7 @@ This very site is my modern interpretation of the .plan file:
 - **Open Source** - Here's how it all works
 
 It's designed to be:
+
 - Transparent (inspect the repo)
 - Authentic (personal voice, not corporate)
 - Technical (details matter)

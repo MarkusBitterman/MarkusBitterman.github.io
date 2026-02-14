@@ -1,0 +1,143 @@
+---
+layout: layouts/base.njk
+---
+
+{% include "partials/hero.njk" %}
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <div class="content is-medium">
+          {{ content | safe }}
+        </div>
+
+        {# Peer Support Work #}
+        {% if peerSupport %}
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-success"><i class="fas fa-hands-helping"></i></span>
+            Peer Support Work 🌱
+          </h3>
+          <div class="content">
+            {{ peerSupport.intro | safe }}
+            <p>What I bring to peer support:</p>
+            <ul>
+              {% for item in peerSupport.skills %}
+              <li><strong>{{ item.name }}</strong> — {{ item.detail }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Development Work #}
+        {% if devWork %}
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-link"><i class="fas fa-laptop-code"></i></span>
+            Development Work 💻
+          </h3>
+          <div class="content">
+            <p>{{ devWork.intro }}</p>
+            <ul>
+              {% for project in devWork.projects %}
+              <li><strong><a href="{{ project.url }}">{{ project.name }}</a></strong> — {{ project.description }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Tech Stack #}
+        {% if stack %}
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-info"><i class="fas fa-toolbox"></i></span>
+            My Stack 🧰
+          </h3>
+          <div class="content">
+            <div class="tags are-medium">
+              {% for tag in stack %}
+              <span class="tag is-{{ tag.color }} is-light">{{ tag.name }}</span>
+              {% endfor %}
+            </div>
+            <p class="mt-3">Check my <a href="/now/">Now page</a> to see what I'm currently exploring.</p>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Dev Environment #}
+        {% if devEnv %}
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-success"><i class="fas fa-terminal"></i></span>
+            Dev Environment 🛠️
+          </h3>
+          <div class="content">
+            <table class="table is-fullwidth is-striped">
+              <tbody>
+                {% for row in devEnv %}
+                <tr><td><strong>{{ row.label }}</strong></td><td>{{ row.value }}</td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Thread / Bridge Statement #}
+        {% if thread %}
+        <div class="notification is-primary is-light">
+          <h3 class="title is-4">{{ thread.title }}</h3>
+          <div class="content">
+            {{ thread.body | safe }}
+          </div>
+        </div>
+        {% endif %}
+
+        {# Why This Site Exists #}
+        {% if siteGoals %}
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-warning"><i class="fas fa-bullseye"></i></span>
+            Why This Site Exists 🎯
+          </h3>
+          <div class="content">
+            <ol>
+              {% for goal in siteGoals %}
+              <li><strong>{{ goal.name }}</strong> — {{ goal.detail }}</li>
+              {% endfor %}
+            </ol>
+          </div>
+        </div>
+        {% endif %}
+
+        {# Finger File Tradition #}
+        {% if fingerFile %}
+        <div class="notification is-link is-light">
+          <h3 class="title is-4">The "Finger File" Tradition 🫰💢👉</h3>
+          <div class="content">
+            {{ fingerFile | safe }}
+          </div>
+        </div>
+        {% endif %}
+
+        {# Contact Links #}
+        {% if contactLinks %}
+        <div class="content has-text-centered mt-6">
+          <h3 class="title is-4">Get in Touch 📫</h3>
+          <div class="buttons is-centered">
+            {% for link in contactLinks %}
+            <a href="{{ link.url }}" class="button is-{{ link.style }}" target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="{{ link.icon }}"></i></span>
+              <span>{{ link.label }}</span>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

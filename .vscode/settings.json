@@ -1,0 +1,47 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrap": "on",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  "files.associations": {
+    "*.njk": "nunjucks",
+    "*.md": "markdown"
+  },
+
+  "files.exclude": {
+    "_site/**": true,
+    "node_modules/**": true
+  },
+
+  "search.exclude": {
+    "_site/**": true,
+    "node_modules/**": true
+  },
+
+  "emmet.includeLanguages": {
+    "nunjucks": "html"
+  },
+
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "other": false,
+      "comments": false,
+      "strings": false
+    }
+  },
+
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[nunjucks]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}

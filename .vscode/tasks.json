@@ -1,0 +1,275 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    // ═══════════════════════════════════════════════════════════════════════
+    // 🧪 VALIDATION
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "✅ Verify Build",
+      "detail": "Full build validation (Sass + Eleventy)",
+      "type": "shell",
+      "command": "npm run build",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔍 Check Output",
+      "detail": "Show build statistics and verify output files",
+      "type": "shell",
+      "command": "echo '=== Build Output ===' && ls -lh _site/ && echo '' && echo '=== File Count ===' && find _site -type f | wc -l && echo 'files generated' && echo '' && echo '=== Total Size ===' && du -sh _site/",
+      "group": "test",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    // ═══════════════════════════════════════════════════════════════════════
+    // 🔨 BUILD
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "🛠️ Build All",
+      "detail": "Build Sass + Eleventy (production-ready)",
+      "type": "shell",
+      "command": "npm run build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📄 Build Eleventy",
+      "detail": "Build HTML only (Eleventy)",
+      "type": "shell",
+      "command": "npx @11ty/eleventy",
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🎨 Build Sass",
+      "detail": "Compile Sass to CSS",
+      "type": "shell",
+      "command": "npm run build:sass",
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    // ═══════════════════════════════════════════════════════════════════════
+    // 🚀 DEVELOPMENT SERVER
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "▶️ Start Server",
+      "detail": "Start development server with hot reload (http://localhost:8080)",
+      "type": "shell",
+      "command": "npm start",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^([^\\s].*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^\\[11ty\\]",
+          "endsPattern": "^\\[11ty\\] Watching\\.\\.\\.|Server at"
+        }
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "⏹️ Stop Server",
+      "detail": "Stop the development server",
+      "type": "shell",
+      "command": "pkill -f 'eleventy.*serve' || echo 'No server running'",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔄 Restart Server",
+      "detail": "Stop and restart the development server",
+      "type": "shell",
+      "command": "pkill -f 'eleventy.*serve' ; sleep 1 ; npm start",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^([^\\s].*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^\\[11ty\\]",
+          "endsPattern": "^\\[11ty\\] Watching\\.\\.\\.|Server at"
+        }
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "📡 Server Status",
+      "detail": "Check if development server is running",
+      "type": "shell",
+      "command": "if pgrep -f 'eleventy.*serve' > /dev/null; then echo '✓ Server is running on http://localhost:8080' && pgrep -af 'eleventy.*serve'; else echo '✗ Server is not running'; fi",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    // ═══════════════════════════════════════════════════════════════════════
+    // 🧹 MAINTENANCE
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "🗑️ Clean Build",
+      "detail": "Remove _site directory",
+      "type": "shell",
+      "command": "rm -rf _site && echo '✓ Cleaned _site/'",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🗑️ Clean All",
+      "detail": "Remove _site, node_modules, and lock files",
+      "type": "shell",
+      "command": "rm -rf _site node_modules package-lock.json && echo '✓ Cleaned _site/, node_modules/, package-lock.json'",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "📦 Install Dependencies",
+      "detail": "npm install (run after Clean All)",
+      "type": "shell",
+      "command": "npm install",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔄 Reinstall",
+      "detail": "Clean all + fresh npm install",
+      "type": "shell",
+      "command": "rm -rf _site node_modules package-lock.json && npm install",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    },
+    // ═══════════════════════════════════════════════════════════════════════
+    // 📊 DIAGNOSTICS
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "📊 Project Stats",
+      "detail": "Show project statistics and disk usage",
+      "type": "shell",
+      "command": "echo '=== Project Files ===' && find src -type f -name '*.md' -o -name '*.njk' -o -name '*.scss' | wc -l && echo 'source files' && echo '' && echo '=== Line Counts ===' && echo -n 'Markdown: ' && find src -name '*.md' -exec cat {} + | wc -l && echo -n 'Templates: ' && find src/_includes -name '*.njk' -exec cat {} + | wc -l && echo -n 'Styles: ' && find src/styles -name '*.scss' -exec cat {} + | wc -l && echo '' && echo '=== Disk Usage ===' && du -sh . 2>/dev/null && echo '' && echo '=== Node Modules ===' && du -sh node_modules 2>/dev/null || echo 'Not installed' && echo '' && echo '=== Build Output ===' && du -sh _site 2>/dev/null || echo 'Not built yet'",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "🔍 List Pages",
+      "detail": "Show all pages and posts in the project",
+      "type": "shell",
+      "command": "echo '=== Pages ===' && ls -1 src/pages/*.md | xargs -n1 basename && echo '' && echo '=== Posts ===' && ls -1 src/posts/*.md | xargs -n1 basename",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    // ═══════════════════════════════════════════════════════════════════════
+    // 🌐 DEPLOYMENT
+    // ═══════════════════════════════════════════════════════════════════════
+    {
+      "label": "🚀 Deploy Check",
+      "detail": "Verify build is ready for deployment",
+      "type": "shell",
+      "command": "npm run build && echo '' && echo '=== Deploy Check ===' && echo 'Pages:' && find _site -name '*.html' | wc -l && echo 'Total size:' && du -sh _site/ && echo 'CNAME:' && cat _site/CNAME && echo '' && echo '✅ Ready to deploy'",
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared"
+      }
+    }
+  ]
+}

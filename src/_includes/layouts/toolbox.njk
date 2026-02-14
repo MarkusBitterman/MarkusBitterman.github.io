@@ -1,0 +1,127 @@
+---
+layout: layouts/base.njk
+---
+
+{% include "partials/hero.njk" %}
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <div class="content is-medium">
+          {{ content | safe }}
+        </div>
+
+        {# Tool navigation #}
+        {% if tools %}
+        <div class="buttons mb-6">
+          {% for tool in tools %}
+          <a href="#{{ tool.id }}" class="button is-{{ tool.color }} is-outlined">
+            <span class="icon"><i class="{{ tool.icon }}"></i></span>
+            <span>{{ tool.name }}</span>
+          </a>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# === Random Key Generator === #}
+<section class="section has-background-light" id="keygen">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <h2 class="title is-2">
+          <span class="icon has-text-info"><i class="fas fa-key"></i></span>
+          Random Key Generator
+        </h2>
+        <p class="subtitle is-5 mb-2">Click any key to copy. Press <kbd>R</kbd> to regenerate all.</p>
+
+        <div class="notification is-success is-light mb-4">
+          <span class="icon"><i class="fas fa-shield-alt"></i></span>
+          <strong>100% client-side.</strong> All generation uses <code>crypto.getRandomValues()</code> — nothing leaves your browser.
+        </div>
+
+        <div class="has-text-centered mb-5">
+          <button id="keygen-regenerate" class="button is-info is-medium">
+            <span class="icon"><i class="fas fa-sync-alt"></i></span>
+            <span>Regenerate All</span>
+          </button>
+        </div>
+
+        <div id="keygen-output">
+          <div class="has-text-centered">
+            <p class="has-text-grey"><em>Generating keys...</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# === Coming Soon / Future Tools === #}
+{% if comingSoon %}
+<section class="section" id="coming-soon">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <h2 class="title is-2">
+          <span class="icon has-text-warning"><i class="fas fa-wrench"></i></span>
+          More Tools Coming
+        </h2>
+        <p class="subtitle is-5 mb-5">Small utilities, too handy to forget, too small to be a repo.</p>
+
+        <div class="columns is-multiline">
+          {% for idea in comingSoon %}
+          <div class="column is-6">
+            <div class="notification is-light">
+              <span class="icon has-text-{{ idea.color }}"><i class="{{ idea.icon }}"></i></span>
+              <strong>{{ idea.name }}</strong>
+              <p class="is-size-7 mt-1">{{ idea.description }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# === Philosophy === #}
+{% if philosophy %}
+<section class="section has-background-light">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <div class="notification is-primary is-light">
+          <h3 class="title is-4">{{ philosophy.title }}</h3>
+          <div class="content">
+            <p>{{ philosophy.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# === CTA === #}
+<section class="section">
+  <div class="container">
+    <div class="content has-text-centered">
+      <h3 class="title is-3">Want to Add a Tool? 🤝</h3>
+      <p class="is-size-5">All tools are open-source and live in the repo. PRs welcome!</p>
+      <div class="buttons is-centered mt-4">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" class="button is-dark is-outlined" target="_blank" rel="noopener noreferrer">
+          <span class="icon"><i class="fab fa-github"></i></span>
+          <span>Fork & Contribute</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/js/keygen.js"></script>

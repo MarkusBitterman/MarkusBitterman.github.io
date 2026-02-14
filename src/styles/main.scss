@@ -1,29 +1,530 @@
-// Customization: Override Bulma variables before importing
-// See all variables: https://bulma.io/documentation/customize/variables/
+// ================================================================
+// NP50 THEME — "Nintendo Power No. 50"
+// ================================================================
+// Visual identity sampled from the July 1993 issue of Nintendo
+// Power magazine, featuring The Legend of Zelda: Link's Awakening.
+//
+// Palette: logo heat, parchment warmth, owl earth, hero blues,
+// grassy life. Clean Bulma-style naming, modern Sass syntax.
+// ================================================================
 
-// Primary colors - customize to your taste
-$primary: #3273dc;
-$link: #3273dc;
-$info: #209cee;
-$success: #23d160;
-$warning: #ffdd57;
-$danger: #ff3860;
+// Sass built-in modules (must come before @import)
+@use "sass:color";
 
-// Typography
-$family-sans-serif: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-$body-size: 16px;
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Coral+Pixels&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=Sixtyfour+Convergence&family=Atkinson+Hyperlegible:wght@400;700&display=swap');
 
-// Responsiveness
-$tablet: 769px;
-$desktop: 1024px;
-$widescreen: 1216px;
+// ────────────────────────────────────────────────────────────────
+// NP50 PALETTE — SCSS VARIABLES
+// ────────────────────────────────────────────────────────────────
 
-// Import Bulma
-@import "../../node_modules/bulma/bulma.sass";
+// Brand Core (The Logo Fire)
+$power-red:       #E60012;
+$power-gold:      #FFC20E;
 
-// Custom styles
+// Hero / Zelda Blues
+$hero-blue:       #1F3C88;
+$sky-hint:        #6FA3D9;
+
+// Owl / Earth
+$owl-umber:       #8A4F2A;
+$feather-rust:    #C46A2D;
+$shadow-bark:     #3A2A1E;
+
+// Environment
+$koholint-grass:  #5FAF3A;
+$parchment-sand:  #C9A46A;
+$aged-paper:      #EFE3C5;
+
+// Neutrals
+$ink-black:       #1C1C1C;
+$soft-shadow:     #6B6B6B;
+
+// ────────────────────────────────────────────────────────────────
+// BULMA OVERRIDES (variables set BEFORE import)
+// ────────────────────────────────────────────────────────────────
+
+$primary:         $power-red;
+$link:            $hero-blue;
+$info:            $sky-hint;
+$success:         $koholint-grass;
+$warning:         $power-gold;
+$danger:          $power-red;
+$dark:            $ink-black;
+$light:           $aged-paper;
+
+$scheme-main:     $aged-paper;
+$background:      $aged-paper;
+
+$family-primary:    "Spectral", Georgia, serif;
+$family-secondary:  "Coral Pixels", monospace;
+$family-code:       "Atkinson Hyperlegible", "SF Mono", "Consolas", monospace;
+$family-sans-serif: $family-primary;
+$body-size:       16px;
+
+$tablet:          769px;
+$desktop:         1024px;
+$widescreen:      1216px;
+
+// ────────────────────────────────────────────────────────────────
+// IMPORT BULMA (v1.0+)
+// ────────────────────────────────────────────────────────────────
+
+@import "../../node_modules/bulma/sass";
+
+
+// ================================================================
+// 1) NP50 THEME TOKENS (CSS Custom Properties)
+// ================================================================
+
+:root {
+  // Core palette
+  --np-power-red:       #{$power-red};
+  --np-power-gold:      #{$power-gold};
+  --np-hero-blue:       #{$hero-blue};
+  --np-sky-hint:        #{$sky-hint};
+  --np-owl-umber:       #{$owl-umber};
+  --np-feather-rust:    #{$feather-rust};
+  --np-shadow-bark:     #{$shadow-bark};
+  --np-koholint-grass:  #{$koholint-grass};
+  --np-parchment-sand:  #{$parchment-sand};
+  --np-aged-paper:      #{$aged-paper};
+  --np-ink-black:       #{$ink-black};
+  --np-soft-shadow:     #{$soft-shadow};
+
+  // UI-derived neutrals
+  --np-surface:   color-mix(in oklab, var(--np-aged-paper) 86%, white);
+  --np-surface-2: color-mix(in oklab, var(--np-aged-paper) 70%, var(--np-parchment-sand));
+  --np-border:    color-mix(in oklab, var(--np-ink-black) 18%, var(--np-aged-paper));
+  --np-shadow:    0 10px 30px rgba(0, 0, 0, 0.12);
+
+  // Tuning knobs
+  --np-paper-contrast: 0.06;
+  --np-ink-bleed:      0.10;
+  --np-pop:            1;
+
+  // Typography
+  --np-font-body:   "Spectral", Georgia, serif;
+  --np-font-header: "Coral Pixels", monospace;
+  --np-font-hero:   "Sixtyfour Convergence", monospace;
+  --np-font-code:   "Atkinson Hyperlegible", "SF Mono", "Consolas", monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --np-pop: 1;
+  }
+
+  * {
+    scroll-behavior: auto !important;
+  }
+
+  // Hide shader canvases — CSS gradient fallback stays visible
+  .shader-canvas {
+    display: none !important;
+  }
+}
+
+// Typography application
+body {
+  font-family: var(--np-font-body);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--np-font-header);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+// Extra margin for titles to accommodate hover underlines
+.title {
+  margin-bottom: 0.37em !important;
+}
+
+h5, h6 {
+  font-family: var(--np-font-body);
+}
+
+code, pre, .is-family-code {
+  font-family: var(--np-font-code) !important;
+}
+
+
+// ================================================================
+// 2) GLOBAL PAPER BACKDROP
+// ================================================================
+
+html,
+body {
+  background:
+    // vignette
+    radial-gradient(
+      1200px 600px at 20% 0%,
+      color-mix(in oklab, var(--np-power-gold) 14%, transparent) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 700px at 85% 20%,
+      color-mix(in oklab, var(--np-hero-blue) 10%, transparent) 0%,
+      transparent 62%
+    ),
+    radial-gradient(
+      900px 800px at 50% 100%,
+      rgba(0, 0, 0, 0.12) 0%,
+      transparent 55%
+    ),
+    // paper fiber / grain
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, calc(var(--np-paper-contrast) * 0.60)) 0px,
+      rgba(0, 0, 0, 0) 2px,
+      rgba(0, 0, 0, calc(var(--np-paper-contrast) * 0.35)) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, calc(var(--np-paper-contrast) * 0.40)) 0px,
+      rgba(0, 0, 0, 0) 3px,
+      rgba(0, 0, 0, calc(var(--np-paper-contrast) * 0.20)) 6px
+    ),
+    // base paper
+    linear-gradient(180deg, var(--np-aged-paper), var(--np-surface));
+  color: var(--np-ink-black);
+}
+
+
+// ================================================================
+// 3) STRIPE ACCENT (logo-stripe energy)
+// ================================================================
+
+.np-stripes {
+  position: relative;
+}
+
+.np-stripes::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -10px 0;
+  height: 10px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      var(--np-power-gold) 0 18px,
+      transparent 18px 26px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--np-power-red) 55%, transparent),
+      transparent 60%
+    );
+  filter: saturate(calc(1.1 * var(--np-pop)));
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+
+// ================================================================
+// 4) HERO — PRINTED POSTER TREATMENT + SHADER CANVAS
+// ================================================================
+
+// The shader canvas sits behind hero-body content via z-index.
+// If WebGL2 isn't available or prefers-reduced-motion is set,
+// the canvas is hidden and the NP50 gradient fallback shows.
+
+.hero.np-hero {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      900px 520px at 20% 20%,
+      color-mix(in oklab, var(--np-power-gold) 55%, transparent) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 520px at 70% 10%,
+      color-mix(in oklab, var(--np-feather-rust) 30%, transparent) 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--np-aged-paper) 82%, var(--np-parchment-sand)),
+      var(--np-aged-paper)
+    );
+
+  // GLSL shader canvas — full-bleed behind content, chunky pixels
+  .shader-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+    pointer-events: none;
+    // Preserve the low-res chunky pixels — no smoothing
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  // CSS scanline overlay on top of the shader (below text)
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.15) 0px,
+        rgba(0, 0, 0, 0.15) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+    mix-blend-mode: multiply;
+  }
+
+  // Ensure hero-body content floats above shader + scanline overlay
+  .hero-body {
+    position: relative;
+    z-index: 2;
+  }
+
+  // print registration "ghost"
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -60px;
+    pointer-events: none;
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--np-hero-blue) 16%, transparent),
+        transparent 55%
+      ),
+      linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--np-power-red) 12%, transparent),
+        transparent 62%
+      );
+    opacity: calc(0.30 * var(--np-ink-bleed));
+    transform: translate3d(3px, -2px, 0);
+    mix-blend-mode: multiply;
+  }
+
+  .title {
+    font-family: var(--np-font-hero);
+    letter-spacing: 0.05em;
+    text-shadow:
+      0 0 8px rgba(255, 255, 255, 0.4),
+      0 0 20px rgba(255, 194, 14, 0.2),
+      1px 1px 0 rgba(0, 0, 0, 0.5);
+    color: var(--np-aged-paper);
+  }
+
+  .subtitle {
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+    color: color-mix(in oklab, var(--np-aged-paper) 80%, var(--np-parchment-sand));
+  }
+}
+
+
+// ================================================================
+// 5) BOXES / CARDS / NOTIFICATIONS — PAPER CUTOUTS
+// ================================================================
+
+.box,
+.card,
+.notification,
+.table {
+  border: 2px solid var(--np-border);
+  background:
+    radial-gradient(
+      600px 180px at 15% 0%,
+      rgba(255, 255, 255, 0.55),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      var(--np-surface),
+      color-mix(in oklab, var(--np-surface) 70%, var(--np-parchment-sand))
+    );
+  box-shadow: var(--np-shadow);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--np-feather-rust);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.box {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      repeating-linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.06) 0 1px,
+        rgba(0, 0, 0, 0) 1px 8px
+      );
+    opacity: calc(0.16 * var(--np-paper-contrast));
+    mix-blend-mode: multiply;
+  }
+}
+
+
+// ================================================================
+// 6) LINKS + BUTTONS — INK UNDERLINES
+// ================================================================
+
+a:not(.button):not(.card-footer-item):not(.navbar-item):not(.tag):not(.navbar-burger) {
+  color: var(--np-hero-blue);
+  text-decoration: none;
+  background:
+    linear-gradient(
+      transparent 70%,
+      color-mix(in oklab, var(--np-power-gold) 70%, transparent) 0
+    );
+  background-size: 100% 0.18em;
+  background-repeat: no-repeat;
+  background-position: 0 92%;
+  transition: background-size 180ms ease, color 180ms ease, filter 180ms ease;
+
+  &:hover {
+    color: color-mix(in oklab, var(--np-hero-blue) 70%, var(--np-power-red));
+    background-size: 100% 0.55em;
+    filter: saturate(calc(1.1 * var(--np-pop)));
+  }
+}
+
+.button.is-primary {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--np-power-red) 92%, white),
+      var(--np-power-red)
+    );
+  border-color: color-mix(in oklab, var(--np-power-red) 80%, black);
+}
+
+.button.is-primary.is-light {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--np-aged-paper) 82%, var(--np-power-gold)),
+      var(--np-aged-paper)
+    );
+  border-color: color-mix(in oklab, var(--np-power-gold) 55%, var(--np-border));
+  color: var(--np-ink-black);
+}
+
+// Read More buttons get the same treatment as filter buttons
+.button.is-info.is-outlined {
+  font-family: var(--np-font-code);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background-color: transparent;
+  border-width: 2px;
+  border-color: var(--np-hero-blue);
+  color: var(--np-hero-blue);
+  transition: all 0.15s ease;
+
+  &:hover {
+    background-color: var(--np-hero-blue);
+    color: var(--np-aged-paper);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(31, 60, 136, 0.25);
+  }
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+}
+
+
+// ================================================================
+// 7) NAVBAR — MAGAZINE MASTHEAD
+// ================================================================
+
+.navbar {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--np-aged-paper) 88%, white),
+      var(--np-aged-paper)
+    );
+  border-bottom: 1px solid var(--np-border);
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+
+  .navbar-item strong {
+    font-family: var(--np-font-header);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+  }
+
+  .navbar-item:hover {
+    background:
+      linear-gradient(
+        180deg,
+        color-mix(in oklab, var(--np-power-gold) 18%, transparent),
+        transparent
+      );
+  }
+}
+
+
+// ================================================================
+// 8) PURE CSS SEAL / BADGE
+// ================================================================
+
+.np-seal {
+  position: relative;
+  padding-top: 1.5rem;
+
+  &::before {
+    content: "OFFICIAL";
+    position: absolute;
+    top: -14px;
+    right: 16px;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+    color: var(--np-ink-black);
+    background:
+      radial-gradient(
+        circle at 30% 30%,
+        rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0) 60%
+      ),
+      conic-gradient(
+        from 10deg,
+        var(--np-power-gold),
+        color-mix(in oklab, var(--np-power-gold) 70%, var(--np-feather-rust)),
+        var(--np-power-gold)
+      );
+    border: 1px solid color-mix(in oklab, var(--np-ink-black) 22%, var(--np-power-gold));
+    border-radius: 999px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+    transform: rotate(6deg);
+  }
+}
+
+
+// ================================================================
+// 9) CUSTOM UTILITY CLASSES
+// ================================================================
+
 .has-border-top {
-  border-top: 1px solid $grey-lighter;
+  border-top: 1px solid var(--np-border);
 }
 
 // Post content styling
@@ -32,24 +533,24 @@ $widescreen: 1216px;
     margin-top: 1.5em;
     margin-bottom: 0.75em;
   }
-  
+
   p {
     margin-bottom: 1em;
   }
-  
+
   code {
     padding: 0.2em 0.4em;
-    background-color: $grey-lightest;
+    background-color: var(--np-surface-2);
     border-radius: 3px;
   }
-  
+
   pre {
     padding: 1em;
     margin-bottom: 1em;
-    background-color: $grey-lightest;
+    background-color: var(--np-surface-2);
     border-radius: 5px;
     overflow-x: auto;
-    
+
     code {
       padding: 0;
       background: none;
@@ -57,38 +558,39 @@ $widescreen: 1216px;
   }
 }
 
-// Hero customization
-.hero {
-  &.is-primary {
-    background: linear-gradient(135deg, $primary 0%, darken($primary, 10%) 100%);
-  }
-}
 
-// Navbar enhancement
-.navbar {
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
-}
+// ================================================================
+// 10) FOOTER
+// ================================================================
 
-// Footer spacing
 .footer {
   margin-top: 3rem;
   padding: 3rem 1.5rem 3rem;
-  background-color: $white-bis;
+  background:
+    linear-gradient(
+      180deg,
+      var(--np-surface),
+      color-mix(in oklab, var(--np-aged-paper) 80%, var(--np-parchment-sand))
+    );
+  border-top: 1px solid var(--np-border);
 }
 
-// Card hover effect
+
+// ================================================================
+// CARD HOVER EFFECT
+// ================================================================
+
 .card {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(10, 10, 10, 0.1);
   }
-  
-  // Respect user's motion preferences
+
   @media (prefers-reduced-motion: reduce) {
     transition: none;
-    
+
     &:hover {
       transform: none;
     }

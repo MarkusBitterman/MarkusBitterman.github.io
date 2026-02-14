@@ -3,11 +3,10 @@ title: "Welcome to the New Site!"
 date: 2026-01-28
 layout: layouts/post.njk
 description: "Introducing my new GitHub Pages site built with Eleventy, Bulma, and Sass — a living portfolio, blog, devlog, and starter kit all in one."
-tags: 
+tags:
   - posts
-  - meta
-  - eleventy
-  - announcement
+  - 📢 meta
+  - 🎉 announcement
 ---
 
 ## Hello and Welcome! 👋
@@ -19,9 +18,9 @@ I'm excited to launch this new version of my GitHub Pages site! After much plann
 This site is designed to be multiple things at once:
 
 - **A Portfolio** 🏪 - Showcasing my projects and work
-- **A Blog** 📰 - Sharing thoughts and tutorials  
+- **A Blog** 📰 - Sharing thoughts and tutorials
 - **A Devlog** 🧑🏻‍💻 - Documenting my development journey
-- **A Playground** 🛝 - Experimenting with new ideas
+- **A Toolbox** 🧰 - Small interactive client-side utilities
 - **A Starter Kit** 📺 - A real example you can clone and customize
 
 But most importantly, it's a **living site you can inspect directly in the repo**. Everything is visible, understandable, and forkable.
@@ -64,7 +63,7 @@ In the coming weeks, I'll be:
 
 - Adding more blog posts and devlog entries
 - Building out the portfolio with project showcases
-- Creating playground experiments and demos
+- Building new toolbox utilities and generators
 - Writing comprehensive documentation
 - Sharing the journey along the way
 

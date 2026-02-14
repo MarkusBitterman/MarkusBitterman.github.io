@@ -16,19 +16,19 @@ layout: layouts/base.njk
               <span class="ml-3">
                 {% for tag in tags %}
                   {% if tag != "posts" %}
-                  <span class="tag is-link is-light">{{ tag }}</span>
+                  <span class="tag is-rounded tag-colored" data-tag-name="{{ tag }}">{{ tag }}</span>
                   {% endif %}
                 {% endfor %}
               </span>
               {% endif %}
             </p>
           </header>
-          
+
           <!-- Post content -->
           <div class="post-content">
             {{ content | safe }}
           </div>
-          
+
           <!-- Post footer -->
           <footer class="mt-6 pt-5 has-border-top">
             <nav class="level">
@@ -38,9 +38,12 @@ layout: layouts/base.njk
                 </div>
               </div>
             </nav>
+
           </footer>
         </article>
       </div>
     </div>
   </div>
 </section>
+
+<script src="/js/tag-colors.js"></script>

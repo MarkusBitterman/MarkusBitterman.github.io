@@ -1,14 +1,14 @@
 {
   "name": "markusbitterman-github-io",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "A living GitHub Pages site: portfolio, blog, devlog, and starter kit",
   "scripts": {
-    "build": "npm run build:sass && npm run build:eleventy",
+    "build": "npm run clean && npm run build:sass && npm run build:eleventy",
     "build:eleventy": "eleventy",
-    "build:sass": "sass src/styles/main.scss _site/css/main.css --style=compressed",
+    "build:sass": "sass src/styles/main.scss _site/css/main.css --style=compressed --silence-deprecation=import --silence-deprecation=if-function",
     "watch": "npm run watch:sass & npm run watch:eleventy",
     "watch:eleventy": "eleventy --serve",
-    "watch:sass": "sass src/styles/main.scss _site/css/main.css --watch",
+    "watch:sass": "sass src/styles/main.scss _site/css/main.css --watch --silence-deprecation=import --silence-deprecation=if-function",
     "start": "npm run watch",
     "clean": "rm -rf _site"
   },
@@ -25,7 +25,7 @@
   "license": "MIT",
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "bulma": "^0.9.4",
+    "bulma": "^1.0.4",
     "sass": "^1.69.5"
   }
 }

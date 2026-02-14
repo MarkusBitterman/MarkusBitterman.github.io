@@ -1,7 +1,10 @@
-<section class="hero is-medium {{ heroClass or 'is-primary' }}">
+<section class="hero is-medium np-hero {{ heroClass or 'is-primary' }}">
+  {% if heroShader %}
+  <canvas class="shader-canvas" data-shader="{{ heroShader }}" aria-hidden="true"></canvas>
+  {% endif %}
   <div class="hero-body">
     <div class="container">
-      <h1 class="title is-1">
+      <h1 class="title is-1 np-stripes">
         {{ heroTitle or title }}
       </h1>
       {% if heroSubtitle %}

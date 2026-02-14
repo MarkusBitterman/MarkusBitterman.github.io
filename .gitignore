@@ -18,8 +18,13 @@ _site/
 .DS_Store
 Thumbs.db
 
-# IDEs
-.vscode/
+# IDEs (keep .vscode/ for shared workspace settings)
 .idea/
 *.swp
 *.swo
+
+# Nix
+result
+result-*
+.direnv/
+.venv/
