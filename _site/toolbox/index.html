@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Small interactive utilities — key generators, scratch pads, and handy tools you can use right in your browser">
+  <title>Toolbox</title>
+
+  <!-- Bulma CSS via custom Sass compilation -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <strong>🧔🏻 Markus Bitterman</strong>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarMain" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          🏠 Home
+        </a>
+        <a class="navbar-item" href="/about/">
+          🪪 About
+        </a>
+        <a class="navbar-item" href="/portfolio/">
+          🗃️ Portfolio
+        </a>
+        <a class="navbar-item" href="/blog/">
+          📰 Blog
+        </a>
+        <a class="navbar-item" href="/now/">
+          🧭 Now
+        </a>
+        <a class="navbar-item" href="/toolbox/">
+          🧰 Toolbox
+        </a>
+        <a class="navbar-item" href="/thank-you/">
+          💗 Thank You
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>View Repo</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile navbar toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  });
+</script>
+
+
+  <main>
+    
+<section class="hero is-medium np-hero is-info">
+  
+  <canvas class="shader-canvas" data-shader="toolbox" aria-hidden="true"></canvas>
+  
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1 np-stripes">
+        Toolbox
+      </h1>
+      
+      <p class="subtitle is-3">
+        Small interactive tools, right in your browser
+      </p>
+      
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <div class="content is-medium">
+          <p>Welcome to the toolbox — a collection of small, useful, client-side utilities. No accounts, no tracking, no data leaves your browser. All cryptographic operations use the browser's built-in Web Crypto API for security, so your secrets never leave your device. Just tools that do their job and get out of the way.</p>
+
+        </div>
+
+        
+        
+        <div class="buttons mb-6">
+          
+          <a href="#keygen" class="button is-info is-outlined">
+            <span class="icon"><i class="fas fa-key"></i></span>
+            <span>Key Generator</span>
+          </a>
+          
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section has-background-light" id="keygen">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <h2 class="title is-2">
+          <span class="icon has-text-info"><i class="fas fa-key"></i></span>
+          Random Key Generator
+        </h2>
+        <p class="subtitle is-5 mb-2">Click any key to copy. Press <kbd>R</kbd> to regenerate all.</p>
+
+        <div class="notification is-success is-light mb-4">
+          <span class="icon"><i class="fas fa-shield-alt"></i></span>
+          <strong>100% client-side.</strong> All generation uses <code>crypto.getRandomValues()</code> — nothing leaves your browser.
+        </div>
+
+        <div class="has-text-centered mb-5">
+          <button id="keygen-regenerate" class="button is-info is-medium">
+            <span class="icon"><i class="fas fa-sync-alt"></i></span>
+            <span>Regenerate All</span>
+          </button>
+        </div>
+
+        <div id="keygen-output">
+          <div class="has-text-centered">
+            <p class="has-text-grey"><em>Generating keys...</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="section has-background-light">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <div class="notification is-primary is-light">
+          <h3 class="title is-4">Why a Toolbox?</h3>
+          <div class="content">
+            <p>Not every useful thing needs to be a full project. These are the little utilities I keep reaching for — small enough to fit in a single page, useful enough to bookmark. Everything runs client-side with no data leaving your browser, because that&#39;s how tools should work. All cryptographic operations use your browser&#39;s built-in Web Crypto API so secrets never leave your device.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container">
+    <div class="content has-text-centered">
+      <h3 class="title is-3">Want to Add a Tool? 🤝</h3>
+      <p class="is-size-5">All tools are open-source and live in the repo. PRs welcome!</p>
+      <div class="buttons is-centered mt-4">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" class="button is-dark is-outlined" target="_blank" rel="noopener noreferrer">
+          <span class="icon"><i class="fab fa-github"></i></span>
+          <span>Fork & Contribute</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/js/keygen.js"></script>
+
+  </main>
+
+  <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- Living document statement -->
+      <div class="notification is-info is-light mb-5">
+        <p class="is-size-6">
+          <strong>📜 This is a living site</strong> — Every page evolves over time.
+        </p>
+        <p class="is-size-7 mt-2">
+          <span class="icon-text">
+            <span class="icon"><i class="fab fa-github"></i></span>
+            <span>
+              Branch: <code>main</code> •
+              <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io/commits/main" target="_blank" rel="noopener noreferrer">view all commits</a> •
+              <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">view source</a>
+            </span>
+          </span>
+        </p>
+      </div>
+
+      <p>
+        <strong>🧾✨ Markus Bitterman's GitHub Pages</strong>
+      </p>
+      <p>
+        A living site: portfolio 🏪 • blog 📰 • devlog 🧑🏻‍💻 • toolbox 🧰
+      </p>
+      <p>
+        Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy</a>,
+        <a href="https://bulma.io/" target="_blank" rel="noopener noreferrer">Bulma</a>, and
+        <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">Sass</a> •
+        Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+      </p>
+      <p class="is-size-7">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+          Clone this repo and roll your own!
+        </a>
+      </p>
+      <p class="is-size-7 mt-2">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.3.0</a> •
+        © 2026 Markus Bitterman • Licensed under MIT
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- GLSL shader backgrounds for hero sections -->
+  <script src="/js/shader-hero.js" defer></script>
+</body>
+</html>

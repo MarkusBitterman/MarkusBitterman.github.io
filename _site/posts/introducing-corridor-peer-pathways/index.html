@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An open-source, community-maintained peer support resource and living map for mental health &amp; crisis recovery in Eastern Iowa&#39;s I-380 Corridor.">
+  <title>Introducing Corridor Peer Pathways</title>
+
+  <!-- Bulma CSS via custom Sass compilation -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <strong>🧔🏻 Markus Bitterman</strong>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarMain" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          🏠 Home
+        </a>
+        <a class="navbar-item" href="/about/">
+          🪪 About
+        </a>
+        <a class="navbar-item" href="/portfolio/">
+          🗃️ Portfolio
+        </a>
+        <a class="navbar-item" href="/blog/">
+          📰 Blog
+        </a>
+        <a class="navbar-item" href="/now/">
+          🧭 Now
+        </a>
+        <a class="navbar-item" href="/toolbox/">
+          🧰 Toolbox
+        </a>
+        <a class="navbar-item" href="/thank-you/">
+          💗 Thank You
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>View Repo</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile navbar toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  });
+</script>
+
+
+  <main>
+    
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8-desktop is-offset-2-desktop">
+        <article class="content">
+          <!-- Post header -->
+          <header class="mb-6">
+            <h1 class="title is-1">Introducing Corridor Peer Pathways</h1>
+            <p class="subtitle is-6">
+              <time datetime="2026-02-10T00:00:00.000Z">February 9, 2026</time>
+              
+              <span class="ml-3">
+                
+                  
+                
+                  
+                  <span class="tag is-rounded tag-colored" data-tag-name="🤝 peer-support">🤝 peer-support</span>
+                  
+                
+                  
+                  <span class="tag is-rounded tag-colored" data-tag-name="🧠 mental-health">🧠 mental-health</span>
+                  
+                
+              </span>
+              
+            </p>
+          </header>
+
+          <!-- Post content -->
+          <div class="post-content">
+            <h2>Recovery Was Never Meant to Be Proprietary 🌱</h2>
+<p>At many points in my life, I was &quot;fit&quot; to disappear quietly. Instead, I found a path — one that didn't cut me when I stepped onto it. <strong>Corridor Peer Pathways</strong> exists so that path doesn't vanish behind me.</p>
+<p><a href="https://github.com/MarkusBitterman/Corridor-Peer-Pathways">Corridor Peer Pathways</a> is an open-source, community-maintained peer support resource for the <strong>I-380 Corridor</strong> in Eastern Iowa: Iowa City, Coralville, North Liberty, Cedar Rapids, Marion, and the communities between them.</p>
+<h2>What It Is 🧭</h2>
+<p>This isn't a startup pitch. It's not a walled garden. It's <strong>a map left out in the open</strong>.</p>
+<p>The repository contains:</p>
+<ul>
+<li><strong>A peer support philosophy</strong> grounded in lived experience</li>
+<li><strong>A local-first resource directory</strong> for Johnson &amp; Linn Counties — 70+ verified organizations covering housing, food, behavioral health, employment, transportation, and more</li>
+<li><strong>&quot;Golden Nuggets&quot;</strong> — field-tested peer support lessons from real-world moments</li>
+<li><strong>Templates and structures</strong> anyone can reuse, remix, or fork for their own community</li>
+</ul>
+<h2>Why Open Source? 🔓</h2>
+<p>Because the same values that make great software also make great peer support:</p>
+<ul>
+<li><strong>Transparency</strong> — no hidden agendas, no gatekeeping</li>
+<li><strong>Collaboration</strong> — the community builds it together</li>
+<li><strong>Accessibility</strong> — free to use, free to fork, free to localize</li>
+<li><strong>Living documentation</strong> — it grows and evolves with the community</li>
+</ul>
+<p>The open source ethos — freely shared knowledge, honest collaboration, and building in public — maps beautifully onto peer support philosophy. Recovery resources shouldn't be locked behind paywalls or institutional gatekeepers. They should be inspectable, forkable, and owned by the people who need them.</p>
+<h2>Peer Support, Explained Plainly 🤝</h2>
+<p>Peer support is grounded in <strong>lived experience</strong>, built on <strong>trust, dignity, and mutual respect</strong>.</p>
+<p>What peer support <strong>does</strong>:</p>
+<ul>
+<li>Goal-setting and accountability</li>
+<li>Skill-building and confidence-building</li>
+<li>Resource navigation (local, real, current)</li>
+<li>Community reintegration</li>
+<li>Walking alongside — not directing from above</li>
+</ul>
+<p>What it <strong>does not do</strong>:</p>
+<ul>
+<li>Clinical therapy</li>
+<li>Diagnosis or medical advice</li>
+<li>Legal services</li>
+<li>Emergency crisis response</li>
+</ul>
+<p>This clarity protects both peers and participants.</p>
+<h2>Golden Nuggets 🪛</h2>
+<p>One of my favorite parts of the project: <strong>Golden Nuggets</strong> are short, practical peer support frameworks derived from everyday moments. Each one takes a real situation — often humorous or frustrating — and extracts a reusable model for emotional regulation, problem-solving, and forward momentum.</p>
+<p>Current nuggets include:</p>
+<ul>
+<li><strong>The Incredible Vanishing Screwdriver</strong> — A framework for emotional regulation and Plan B thinking when things don't go as expected</li>
+<li><strong>Emotional Regulation &amp; Driving a Bus</strong> — Understanding emotions as passengers, not drivers, on your life's journey</li>
+<li><strong>Developing Great Bedtime Rituals</strong> — Building portable self-care routines that work anywhere you sleep</li>
+</ul>
+<p>These draw from lived experience to help us live with mindfulness and greater understanding.</p>
+<h2>Fork It. Localize It. Build Something Kinder. 🌍</h2>
+<p>If you're doing peer support work in your own community, <strong>Corridor Peer Pathways is designed to be cloned</strong>. Change the county names, update the phone numbers, add your own Golden Nuggets. The structure is the gift.</p>
+<blockquote>
+<p><em>Steal this information and use it to live well. I cannot hold the copyright for how to live well.</em> ♾️</p>
+</blockquote>
+<p>The project is released under <strong>The Unlicense</strong> — full public domain. No attribution required. No permission needed.</p>
+<hr>
+<p>👉 <a href="https://github.com/MarkusBitterman/Corridor-Peer-Pathways">View the Repository</a></p>
+<p><em>This is Eastern Iowa. This is mental health &amp; crisis recovery. This is peer support, lived honestly and shared freely.</em></p>
+
+          </div>
+
+          <!-- Post footer -->
+          <footer class="mt-6 pt-5 has-border-top">
+            <nav class="level">
+              <div class="level-left">
+                <div class="level-item">
+                  <a href="/blog/" class="button is-light">← Back to all posts</a>
+                </div>
+              </div>
+            </nav>
+
+          </footer>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/js/tag-colors.js"></script>
+
+  </main>
+
+  <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- Living document statement -->
+      <div class="notification is-info is-light mb-5">
+        <p class="is-size-6">
+          <strong>📜 This is a living site</strong> — Every page evolves over time.
+        </p>
+        <p class="is-size-7 mt-2">
+          <span class="icon-text">
+            <span class="icon"><i class="fab fa-github"></i></span>
+            <span>
+              Branch: <code>main</code> •
+              <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io/commits/main" target="_blank" rel="noopener noreferrer">view all commits</a> •
+              <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">view source</a>
+            </span>
+          </span>
+        </p>
+      </div>
+
+      <p>
+        <strong>🧾✨ Markus Bitterman's GitHub Pages</strong>
+      </p>
+      <p>
+        A living site: portfolio 🏪 • blog 📰 • devlog 🧑🏻‍💻 • toolbox 🧰
+      </p>
+      <p>
+        Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy</a>,
+        <a href="https://bulma.io/" target="_blank" rel="noopener noreferrer">Bulma</a>, and
+        <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">Sass</a> •
+        Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+      </p>
+      <p class="is-size-7">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+          Clone this repo and roll your own!
+        </a>
+      </p>
+      <p class="is-size-7 mt-2">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.3.0</a> •
+        © 2026 Markus Bitterman • Licensed under MIT
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- GLSL shader backgrounds for hero sections -->
+  <script src="/js/shader-hero.js" defer></script>
+</body>
+</html>

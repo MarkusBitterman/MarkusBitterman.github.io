@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Thoughts, tutorials, devlogs, and journal entries">
+  <title>Blog &amp; Devlog</title>
+
+  <!-- Bulma CSS via custom Sass compilation -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <strong>🧔🏻 Markus Bitterman</strong>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarMain" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          🏠 Home
+        </a>
+        <a class="navbar-item" href="/about/">
+          🪪 About
+        </a>
+        <a class="navbar-item" href="/portfolio/">
+          🗃️ Portfolio
+        </a>
+        <a class="navbar-item" href="/blog/">
+          📰 Blog
+        </a>
+        <a class="navbar-item" href="/now/">
+          🧭 Now
+        </a>
+        <a class="navbar-item" href="/toolbox/">
+          🧰 Toolbox
+        </a>
+        <a class="navbar-item" href="/thank-you/">
+          💗 Thank You
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>View Repo</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile navbar toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  });
+</script>
+
+
+  <main>
+    
+<section class="hero is-medium np-hero is-info">
+  <canvas class="shader-canvas" data-shader="blog" aria-hidden="true"></canvas>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1 np-stripes">Blog &amp; Devlog</h1>
+      <p class="subtitle is-3">Thoughts • Tutorials • Progress Updates</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content">
+      <p class="is-size-5 mb-6">
+        Welcome to my blog and devlog! Here you'll find thoughts, tutorials, progress updates,
+        and journal entries. In the spirit of the classic Unix "finger file" tradition,
+        this is where I share what I'm working on and what I'm learning.
+      </p>
+      <p class="is-size-6 mb-4 has-text-grey-dark">
+        <strong>💡 Tag filtering:</strong> Click tags to toggle them on/off. Posts matching <em>any</em> selected tag will show. Numbers update as you filter. Hit Reset to clear all selections.
+      </p>
+    </div>
+
+    
+    
+
+    
+    
+    
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+    
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    <div class="buttons mb-5" id="tag-filters">
+      <button class="button is-small tag-filter tag-filter-all is-active" data-tag="all">
+        <span class="icon is-small"><i class="fas fa-layer-group"></i></span>
+        <span>All</span>
+        <span class="tag-count" data-count="7">(7)</span>
+      </button>
+      <button class="button is-small tag-filter tag-filter-reset is-hidden" id="reset-filters">
+        <span class="icon is-small"><i class="fas fa-undo"></i></span>
+        <span>Reset</span>
+      </button>
+      
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="privacy" data-count="1">
+        <span class="tag-label">privacy</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="theme" data-count="1">
+        <span class="tag-label">theme</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="🌐 culture" data-count="1">
+        <span class="tag-label">🌐 culture</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="🎉 announcement" data-count="1">
+        <span class="tag-label">🎉 announcement</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="🎨 design" data-count="1">
+        <span class="tag-label">🎨 design</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="🎮 retro" data-count="1">
+        <span class="tag-label">🎮 retro</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="🏗️ hallway" data-count="1">
+        <span class="tag-label">🏗️ hallway</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="🏗️ tutorial" data-count="1">
+        <span class="tag-label">🏗️ tutorial</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="🐧 nixos" data-count="1">
+        <span class="tag-label">🐧 nixos</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="💾 css" data-count="2">
+        <span class="tag-label">💾 css</span>
+        <span class="tag-count">(2)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="📓 devlog" data-count="2">
+        <span class="tag-label">📓 devlog</span>
+        <span class="tag-count">(2)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="📜 history" data-count="1">
+        <span class="tag-label">📜 history</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="📢 meta" data-count="1">
+        <span class="tag-label">📢 meta</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="📱 social-media" data-count="1">
+        <span class="tag-label">📱 social-media</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="📸 photography" data-count="1">
+        <span class="tag-label">📸 photography</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="🔧 eleventy" data-count="1">
+        <span class="tag-label">🔧 eleventy</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="🤝 peer-support" data-count="1">
+        <span class="tag-label">🤝 peer-support</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+      
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      <button class="button is-small tag-filter tag-filter-btn" data-tag="🧠 mental-health" data-count="1">
+        <span class="tag-label">🧠 mental-health</span>
+        <span class="tag-count">(1)</span>
+      </button>
+      
+    </div>
+    
+
+    <div class="columns is-multiline" id="post-list">
+      
+      <div class="column is-12 post-card" data-tags="📸 photography|privacy|📱 social-media|">
+        <div class="card mb-4">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <span class="icon is-large has-text-info">
+                  <i class="fas fa-file-alt fa-2x"></i>
+                </span>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">
+                  <a href="/posts/socialize-sh-whats-in-your-selfies/" class="has-text-dark">socialize.sh: What&#39;s Really in Your Selfies?</a>
+                </p>
+                <p class="subtitle is-6 has-text-grey">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                    <time datetime="2026-02-12T00:00:00.000Z">February 11, 2026</time>
+                  </span>
+                  
+                  <span class="ml-3">
+                    
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="📸 photography">📸 photography</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="privacy">privacy</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="📱 social-media">📱 social-media</span>
+                      
+                    
+                  </span>
+                  
+                </p>
+              </div>
+            </div>
+            <div class="content">
+              
+                <p>Exploring the hidden world of social media depth features, portrait metadata, and what platforms actually do with your photos.</p>
+              
+              <a href="/posts/socialize-sh-whats-in-your-selfies/" class="button is-info is-outlined is-small">
+                <span>Read more</span>
+                <span class="icon is-small"><i class="fas fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column is-12 post-card" data-tags="🐧 nixos|🏗️ hallway|📓 devlog|">
+        <div class="card mb-4">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <span class="icon is-large has-text-info">
+                  <i class="fas fa-file-alt fa-2x"></i>
+                </span>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">
+                  <a href="/posts/hallway-os-your-digital-life/" class="has-text-dark">HALLway OS: Your Digital Life, Under Your Rules</a>
+                </p>
+                <p class="subtitle is-6 has-text-grey">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                    <time datetime="2026-02-11T00:00:00.000Z">February 10, 2026</time>
+                  </span>
+                  
+                  <span class="ml-3">
+                    
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="🐧 nixos">🐧 nixos</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="🏗️ hallway">🏗️ hallway</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="📓 devlog">📓 devlog</span>
+                      
+                    
+                  </span>
+                  
+                </p>
+              </div>
+            </div>
+            <div class="content">
+              
+                <p>Introducing HALLway — a NixOS-based operating system stack built around one stubborn, calming idea: your digital life should live on your hardware, under your rules.</p>
+              
+              <a href="/posts/hallway-os-your-digital-life/" class="button is-info is-outlined is-small">
+                <span>Read more</span>
+                <span class="icon is-small"><i class="fas fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column is-12 post-card" data-tags="🤝 peer-support|🧠 mental-health|">
+        <div class="card mb-4">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <span class="icon is-large has-text-info">
+                  <i class="fas fa-file-alt fa-2x"></i>
+                </span>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">
+                  <a href="/posts/introducing-corridor-peer-pathways/" class="has-text-dark">Introducing Corridor Peer Pathways</a>
+                </p>
+                <p class="subtitle is-6 has-text-grey">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                    <time datetime="2026-02-10T00:00:00.000Z">February 9, 2026</time>
+                  </span>
+                  
+                  <span class="ml-3">
+                    
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="🤝 peer-support">🤝 peer-support</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="🧠 mental-health">🧠 mental-health</span>
+                      
+                    
+                  </span>
+                  
+                </p>
+              </div>
+            </div>
+            <div class="content">
+              
+                <p>An open-source, community-maintained peer support resource and living map for mental health &amp; crisis recovery in Eastern Iowa&#39;s I-380 Corridor.</p>
+              
+              <a href="/posts/introducing-corridor-peer-pathways/" class="button is-info is-outlined is-small">
+                <span>Read more</span>
+                <span class="icon is-small"><i class="fas fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column is-12 post-card" data-tags="🎨 design|🎮 retro|💾 css|theme|">
+        <div class="card mb-4">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <span class="icon is-large has-text-info">
+                  <i class="fas fa-file-alt fa-2x"></i>
+                </span>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">
+                  <a href="/posts/np50-theme-nintendo-power/" class="has-text-dark">NP50: A CSS Theme Inspired by Nintendo Power No. 50</a>
+                </p>
+                <p class="subtitle is-6 has-text-grey">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                    <time datetime="2026-01-29T00:00:00.000Z">January 28, 2026</time>
+                  </span>
+                  
+                  <span class="ml-3">
+                    
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="🎨 design">🎨 design</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="🎮 retro">🎮 retro</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="💾 css">💾 css</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="theme">theme</span>
+                      
+                    
+                  </span>
+                  
+                </p>
+              </div>
+            </div>
+            <div class="content">
+              
+                <p>How I built a complete visual theme by sampling colors from the July 1993 issue of Nintendo Power — the one with Zelda: Link&#39;s Awakening on the cover.</p>
+              
+              <a href="/posts/np50-theme-nintendo-power/" class="button is-info is-outlined is-small">
+                <span>Read more</span>
+                <span class="icon is-small"><i class="fas fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column is-12 post-card" data-tags="📢 meta|🎉 announcement|">
+        <div class="card mb-4">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <span class="icon is-large has-text-info">
+                  <i class="fas fa-file-alt fa-2x"></i>
+                </span>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">
+                  <a href="/posts/welcome/" class="has-text-dark">Welcome to the New Site!</a>
+                </p>
+                <p class="subtitle is-6 has-text-grey">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                    <time datetime="2026-01-28T00:00:00.000Z">January 27, 2026</time>
+                  </span>
+                  
+                  <span class="ml-3">
+                    
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="📢 meta">📢 meta</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="🎉 announcement">🎉 announcement</span>
+                      
+                    
+                  </span>
+                  
+                </p>
+              </div>
+            </div>
+            <div class="content">
+              
+                <p>Introducing my new GitHub Pages site built with Eleventy, Bulma, and Sass — a living portfolio, blog, devlog, and starter kit all in one.</p>
+              
+              <a href="/posts/welcome/" class="button is-info is-outlined is-small">
+                <span>Read more</span>
+                <span class="icon is-small"><i class="fas fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column is-12 post-card" data-tags="🏗️ tutorial|🔧 eleventy|💾 css|">
+        <div class="card mb-4">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <span class="icon is-large has-text-info">
+                  <i class="fas fa-file-alt fa-2x"></i>
+                </span>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">
+                  <a href="/posts/building-with-eleventy-bulma-sass/" class="has-text-dark">Building with Eleventy, Bulma, and Sass</a>
+                </p>
+                <p class="subtitle is-6 has-text-grey">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                    <time datetime="2026-01-27T00:00:00.000Z">January 26, 2026</time>
+                  </span>
+                  
+                  <span class="ml-3">
+                    
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="🏗️ tutorial">🏗️ tutorial</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="🔧 eleventy">🔧 eleventy</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="💾 css">💾 css</span>
+                      
+                    
+                  </span>
+                  
+                </p>
+              </div>
+            </div>
+            <div class="content">
+              
+                <p>A deep dive into why I chose Eleventy + Bulma + Sass for this site, and how they work together beautifully.</p>
+              
+              <a href="/posts/building-with-eleventy-bulma-sass/" class="button is-info is-outlined is-small">
+                <span>Read more</span>
+                <span class="icon is-small"><i class="fas fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column is-12 post-card" data-tags="📜 history|📓 devlog|🌐 culture|">
+        <div class="card mb-4">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <span class="icon is-large has-text-info">
+                  <i class="fas fa-file-alt fa-2x"></i>
+                </span>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">
+                  <a href="/posts/finger-file-tradition/" class="has-text-dark">The Finger File Tradition and Modern Devlogs</a>
+                </p>
+                <p class="subtitle is-6 has-text-grey">
+                  <span class="icon-text">
+                    <span class="icon"><i class="fas fa-calendar-alt"></i></span>
+                    <time datetime="2026-01-26T00:00:00.000Z">January 25, 2026</time>
+                  </span>
+                  
+                  <span class="ml-3">
+                    
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="📜 history">📜 history</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="📓 devlog">📓 devlog</span>
+                      
+                    
+                      
+                      <span class="tag is-rounded tag-colored" data-tag-name="🌐 culture">🌐 culture</span>
+                      
+                    
+                  </span>
+                  
+                </p>
+              </div>
+            </div>
+            <div class="content">
+              
+                <p>Exploring the history of Unix finger files and how they inspired modern devlogs, status pages, and the practice of working in public.</p>
+              
+              <a href="/posts/finger-file-tradition/" class="button is-info is-outlined is-small">
+                <span>Read more</span>
+                <span class="icon is-small"><i class="fas fa-arrow-right"></i></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+  </div>
+</section>
+
+<script src="/js/tag-colors.js"></script>
+<script>
+(function() {
+  // Use shared TagColors utility
+  var sanitizeTag = window.TagColors.sanitize;
+  var hashTagColor = window.TagColors.hash;
+  var hashTagBorderColor = window.TagColors.border;
+
+  // ── Style all filter buttons ──
+  var filterButtons = document.querySelectorAll(".tag-filter-btn");
+  filterButtons.forEach(function(btn) {
+    var displayTag = btn.getAttribute("data-tag");
+    var bgColor = hashTagColor(displayTag);
+    var borderColor = hashTagBorderColor(displayTag);
+
+    btn.setAttribute("data-bg-color", bgColor);
+    btn.setAttribute("data-border-color", borderColor);
+    btn.setAttribute("data-clean-tag", sanitizeTag(displayTag));
+
+    // Base styling
+    btn.style.fontFamily = 'var(--np-font-code)';
+    btn.style.fontSize = '0.85rem';
+    btn.style.fontWeight = '600';
+    btn.style.letterSpacing = '0.02em';
+    btn.style.backgroundColor = 'transparent';
+    btn.style.borderWidth = '2px';
+    btn.style.borderStyle = 'solid';
+    btn.style.borderColor = borderColor;
+    btn.style.color = borderColor;
+    btn.style.transition = 'all 0.15s ease';
+    btn.style.textTransform = 'uppercase';
+  });
+
+  // Style the All and Reset buttons
+  var allBtn = document.querySelector(".tag-filter-all");
+  var resetBtn = document.querySelector(".tag-filter-reset");
+  [allBtn, resetBtn].forEach(function(btn) {
+    if (btn) {
+      btn.style.fontFamily = 'var(--np-font-code)';
+      btn.style.fontSize = '0.85rem';
+      btn.style.fontWeight = '700';
+      btn.style.letterSpacing = '0.03em';
+      btn.style.textTransform = 'uppercase';
+      btn.style.backgroundColor = 'var(--np-power-gold)';
+      btn.style.borderWidth = '2px';
+      btn.style.borderStyle = 'solid';
+      btn.style.borderColor = 'var(--np-feather-rust)';
+      btn.style.color = 'var(--np-ink-black)';
+      btn.style.transition = 'all 0.15s ease';
+    }
+  });
+
+  var filters = document.getElementById("tag-filters");
+  if (!filters) return;
+
+  var cards = document.querySelectorAll(".post-card");
+  var activeTags = new Set(); // Track sanitized clean tags
+
+  function updateDisplay() {
+    var visibleCards = [];
+
+    // Show/hide cards based on active tags
+    cards.forEach(function(card) {
+      var cardTagsRaw = (card.getAttribute("data-tags") || "").split("|").filter(function(t) { return t.trim(); });
+      var cardTags = cardTagsRaw.map(sanitizeTag);
+      var isVisible = false;
+
+      if (activeTags.size === 0) {
+        isVisible = true;
+      } else {
+        cardTags.forEach(function(tag) {
+          if (activeTags.has(tag)) {
+            isVisible = true;
+          }
+        });
+      }
+
+      card.style.display = isVisible ? "" : "none";
+      if (isVisible) visibleCards.push(card);
+    });
+
+    // Update counts for each tag button
+    filterButtons.forEach(function(btn) {
+      var cleanTag = btn.getAttribute("data-clean-tag");
+      var count = 0;
+
+      visibleCards.forEach(function(card) {
+        var cardTagsRaw = (card.getAttribute("data-tags") || "").split("|").filter(function(t) { return t.trim(); });
+        var cardTags = cardTagsRaw.map(sanitizeTag);
+        if (cardTags.indexOf(cleanTag) !== -1) {
+          count++;
+        }
+      });
+
+      var countSpan = btn.querySelector(".tag-count");
+      if (countSpan) {
+        countSpan.textContent = "(" + count + ")";
+      }
+
+      // Fade out and disable buttons with 0 count (unless they're active)
+      if (count === 0 && !activeTags.has(cleanTag)) {
+        btn.style.opacity = '0.3';
+        btn.style.pointerEvents = 'none';
+      } else {
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
+      }
+    });
+
+    // Update "All" button count
+    var allCountSpan = allBtn.querySelector(".tag-count");
+    if (allCountSpan) {
+      allCountSpan.textContent = "(" + visibleCards.length + ")";
+    }
+
+    // Show/hide reset button
+    if (activeTags.size > 0) {
+      allBtn.classList.add("is-hidden");
+      resetBtn.classList.remove("is-hidden");
+    } else {
+      allBtn.classList.remove("is-hidden");
+      resetBtn.classList.add("is-hidden");
+    }
+  }
+
+  // Click handler for tag buttons
+  filterButtons.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      var cleanTag = btn.getAttribute("data-clean-tag");
+      var bgColor = btn.getAttribute("data-bg-color");
+      var borderColor = btn.getAttribute("data-border-color");
+
+      // Toggle this tag
+      if (activeTags.has(cleanTag)) {
+        activeTags.delete(cleanTag);
+        // Revert to outlined style
+        btn.style.backgroundColor = 'transparent';
+        btn.style.color = borderColor;
+        btn.style.borderColor = borderColor;
+      } else {
+        activeTags.add(cleanTag);
+        // Apply active/filled style
+        btn.style.backgroundColor = bgColor;
+        btn.style.color = '#ffffff';
+        btn.style.borderColor = borderColor;
+      }
+
+      updateDisplay();
+    });
+  });
+
+  // Reset button handler
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function() {
+      activeTags.clear();
+
+      // Reset all tag button styles
+      filterButtons.forEach(function(btn) {
+        var borderColor = btn.getAttribute("data-border-color");
+        btn.style.backgroundColor = 'transparent';
+        btn.style.color = borderColor;
+        btn.style.borderColor = borderColor;
+      });
+
+      updateDisplay();
+    });
+  }
+
+  // Initial display
+  updateDisplay();
+})();
+</script>
+
+  </main>
+
+  <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- Living document statement -->
+      <div class="notification is-info is-light mb-5">
+        <p class="is-size-6">
+          <strong>📜 This is a living site</strong> — Every page evolves over time.
+        </p>
+        <p class="is-size-7 mt-2">
+          <span class="icon-text">
+            <span class="icon"><i class="fab fa-github"></i></span>
+            <span>
+              Branch: <code>main</code> •
+              <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io/commits/main" target="_blank" rel="noopener noreferrer">view all commits</a> •
+              <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">view source</a>
+            </span>
+          </span>
+        </p>
+      </div>
+
+      <p>
+        <strong>🧾✨ Markus Bitterman's GitHub Pages</strong>
+      </p>
+      <p>
+        A living site: portfolio 🏪 • blog 📰 • devlog 🧑🏻‍💻 • toolbox 🧰
+      </p>
+      <p>
+        Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy</a>,
+        <a href="https://bulma.io/" target="_blank" rel="noopener noreferrer">Bulma</a>, and
+        <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">Sass</a> •
+        Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+      </p>
+      <p class="is-size-7">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+          Clone this repo and roll your own!
+        </a>
+      </p>
+      <p class="is-size-7 mt-2">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.3.0</a> •
+        © 2026 Markus Bitterman • Licensed under MIT
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- GLSL shader backgrounds for hero sections -->
+  <script src="/js/shader-hero.js" defer></script>
+</body>
+</html>

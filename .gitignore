@@ -12,7 +12,7 @@ yarn-error.log*
 package-lock.json
 
 # Eleventy
-_site/
+# _site/
 
 # OS
 .DS_Store

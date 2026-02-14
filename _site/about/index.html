@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Peer support specialist, developer, and open-source advocate building tools for mental health recovery and digital autonomy in Eastern Iowa">
+  <title>About Markus</title>
+
+  <!-- Bulma CSS via custom Sass compilation -->
+  <link rel="stylesheet" href="/css/main.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <strong>🧔🏻 Markus Bitterman</strong>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarMain" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          🏠 Home
+        </a>
+        <a class="navbar-item" href="/about/">
+          🪪 About
+        </a>
+        <a class="navbar-item" href="/portfolio/">
+          🗃️ Portfolio
+        </a>
+        <a class="navbar-item" href="/blog/">
+          📰 Blog
+        </a>
+        <a class="navbar-item" href="/now/">
+          🧭 Now
+        </a>
+        <a class="navbar-item" href="/toolbox/">
+          🧰 Toolbox
+        </a>
+        <a class="navbar-item" href="/thank-you/">
+          💗 Thank You
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-light" href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>View Repo</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile navbar toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+      });
+    });
+  });
+</script>
+
+
+  <main>
+    
+<section class="hero is-medium np-hero is-link">
+  
+  <canvas class="shader-canvas" data-shader="about" aria-hidden="true"></canvas>
+  
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1 np-stripes">
+        About Me
+      </h1>
+      
+      <p class="subtitle is-3">
+        Peer Support Specialist • Developer • Open-Source Advocate
+      </p>
+      
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <div class="content is-medium">
+          <h2>Hello, I'm Markus 👋</h2>
+<p>I'm a <strong>peer support specialist</strong> and <strong>developer</strong> based in <strong>Iowa City, Iowa</strong> (Eastern Iowa's I-380 Corridor). My work lives at the intersection of mental health recovery and open-source technology — two worlds that share more values than you'd think: transparency, collaboration, lived experience, and the belief that the best tools are the ones you can inspect, fork, and make your own.</p>
+
+        </div>
+
+        
+        
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-success"><i class="fas fa-hands-helping"></i></span>
+            Peer Support Work 🌱
+          </h3>
+          <div class="content">
+            <p>I'm employed at <strong>Shelter House Iowa</strong> as a <strong>Senior Fresh Starts Janitor</strong> and <strong>Peer Support Specialist</strong>, working out of 501 Southgate in Iowa City. I'm also a <strong>Fairweather Lodge graduate</strong> — meaning I've walked the path I now help others navigate.</p> <p>Independently, I operate <strong><a href="https://github.com/MarkusBitterman/Corridor-Peer-Pathways">Corridor Peer Pathways</a></strong> — an open-source, community-maintained peer support resource and living map for mental health &amp; crisis recovery across Johnson and Linn Counties.</p>
+            <p>What I bring to peer support:</p>
+            <ul>
+              
+              <li><strong>Lived experience</strong> — I&#39;ve been through the system. That&#39;s not a footnote, it&#39;s the foundation.</li>
+              
+              <li><strong>Goal-setting &amp; accountability</strong> — Walking alongside, not directing from above</li>
+              
+              <li><strong>Resource navigation</strong> — Connecting people with real, local, current resources</li>
+              
+              <li><strong>Community reintegration</strong> — Helping people find their footing and their people</li>
+              
+              <li><strong>Documentation</strong> — Because recovery knowledge shouldn&#39;t disappear when someone moves on</li>
+              
+            </ul>
+          </div>
+        </div>
+        
+
+        
+        
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-link"><i class="fas fa-laptop-code"></i></span>
+            Development Work 💻
+          </h3>
+          <div class="content">
+            <p>I build tools that reflect the values I practice in peer support: transparent, inspectable, and designed to empower the people using them.</p>
+            <ul>
+              
+              <li><strong><a href="https://github.com/MarkusBitterman/HALLway">HALLway</a></strong> — A NixOS-based operating system stack built around privacy-first, local-first computing. Your digital life should live on your hardware, under your rules.</li>
+              
+              <li><strong><a href="https://github.com/MarkusBitterman/Corridor-Peer-Pathways">Corridor Peer Pathways</a></strong> — Open-source peer support resources for Eastern Iowa, including 70+ verified organizations and field-tested frameworks.</li>
+              
+              <li><strong><a href="https://github.com/MarkusBitterman/socialize.sh">socialize.sh</a></strong> — Exploring what your camera app&#39;s Social Media depth features really do with your photos and metadata.</li>
+              
+              <li><strong><a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io">This site</a></strong> — A living portfolio, blog, and starter kit built with Eleventy, Bulma, and Sass.</li>
+              
+            </ul>
+          </div>
+        </div>
+        
+
+        
+        
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-info"><i class="fas fa-toolbox"></i></span>
+            My Stack 🧰
+          </h3>
+          <div class="content">
+            <div class="tags are-medium">
+              
+              <span class="tag is-dark is-light">NixOS ❄️</span>
+              
+              <span class="tag is-dark is-light">Nix Flakes</span>
+              
+              <span class="tag is-link is-light">Eleventy (11ty)</span>
+              
+              <span class="tag is-link is-light">Nunjucks</span>
+              
+              <span class="tag is-info is-light">Bulma</span>
+              
+              <span class="tag is-info is-light">Sass</span>
+              
+              <span class="tag is-success is-light">Markdown</span>
+              
+              <span class="tag is-success is-light">Bash / Shell</span>
+              
+              <span class="tag is-warning is-light">Home Manager</span>
+              
+              <span class="tag is-warning is-light">agenix</span>
+              
+              <span class="tag is-dark is-light">Git &amp; GitHub</span>
+              
+              <span class="tag is-dark is-light">ZFS</span>
+              
+            </div>
+            <p class="mt-3">Check my <a href="/now/">Now page</a> to see what I'm currently exploring.</p>
+          </div>
+        </div>
+        
+
+        
+        
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-success"><i class="fas fa-terminal"></i></span>
+            Dev Environment 🛠️
+          </h3>
+          <div class="content">
+            <table class="table is-fullwidth is-striped">
+              <tbody>
+                
+                <tr><td><strong>Editor</strong></td><td>VS Code OSS</td></tr>
+                
+                <tr><td><strong>OS</strong></td><td>NixOS ❄️ (declarative, reproducible, clean)</td></tr>
+                
+                <tr><td><strong>Hardware</strong></td><td>Atari VCS 800 (HALLway 2600AD)</td></tr>
+                
+                <tr><td><strong>Desktop</strong></td><td>Hyprland / Wayland</td></tr>
+                
+                <tr><td><strong>Philosophy</strong></td><td>Keep it inspectable, keep it honest, keep it kind</td></tr>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+
+        
+        
+        <div class="notification is-primary is-light">
+          <h3 class="title is-4">The Thread That Connects It All 🧵</h3>
+          <div class="content">
+            <p>People sometimes ask how peer support and programming fit together. The answer is simple: <strong>they're the same work</strong>.</p> <p>Both are about building systems that respect the people inside them. Both require transparency, patience, and the willingness to document what you've learned so the next person doesn't have to start from scratch. Both believe that the best solutions come from <strong>lived experience shared freely</strong>.</p> <p>Recovery was never meant to be proprietary. Neither was good software.</p>
+          </div>
+        </div>
+        
+
+        
+        
+        <div class="box">
+          <h3 class="title is-4">
+            <span class="icon has-text-warning"><i class="fas fa-bullseye"></i></span>
+            Why This Site Exists 🎯
+          </h3>
+          <div class="content">
+            <ol>
+              
+              <li><strong>Portfolio</strong> — Showcase my projects in peer support and technology</li>
+              
+              <li><strong>Blog/Devlog</strong> — Share thoughts, tutorials, and progress updates</li>
+              
+              <li><strong>Bridge</strong> — Connect the peer support and open-source communities</li>
+              
+              <li><strong>Starter Kit</strong> — Provide a real, working example others can learn from and fork</li>
+              
+              <li><strong>Digital Home</strong> — A living space on the web that evolves with me</li>
+              
+            </ol>
+          </div>
+        </div>
+        
+
+        
+        
+        <div class="notification is-link is-light">
+          <h3 class="title is-4">The "Finger File" Tradition 🫰💢👉</h3>
+          <div class="content">
+            <p>This site is inspired by the classic Unix <code>finger</code> protocol from the 90s. Developers like John Carmack would maintain a <code>.plan</code> file — a simple text document showing what they were working on. It was personal, direct, and authentic.</p> <p>This site carries that spirit forward: <strong>a personal status file for the modern web</strong>.</p>
+          </div>
+        </div>
+        
+
+        
+        
+        <div class="content has-text-centered mt-6">
+          <h3 class="title is-4">Get in Touch 📫</h3>
+          <div class="buttons is-centered">
+            
+            <a href="https://github.com/MarkusBitterman" class="button is-dark" target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>GitHub</span>
+            </a>
+            
+            <a href="https://github.com/MarkusBitterman/Corridor-Peer-Pathways" class="button is-success is-outlined" target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="fas fa-heart"></i></span>
+              <span>Corridor Peer Pathways</span>
+            </a>
+            
+            <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" class="button is-link is-outlined" target="_blank" rel="noopener noreferrer">
+              <span class="icon"><i class="fas fa-code-branch"></i></span>
+              <span>Clone This Site</span>
+            </a>
+            
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <!-- Living document statement -->
+      <div class="notification is-info is-light mb-5">
+        <p class="is-size-6">
+          <strong>📜 This is a living site</strong> — Every page evolves over time.
+        </p>
+        <p class="is-size-7 mt-2">
+          <span class="icon-text">
+            <span class="icon"><i class="fab fa-github"></i></span>
+            <span>
+              Branch: <code>main</code> •
+              <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io/commits/main" target="_blank" rel="noopener noreferrer">view all commits</a> •
+              <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">view source</a>
+            </span>
+          </span>
+        </p>
+      </div>
+
+      <p>
+        <strong>🧾✨ Markus Bitterman's GitHub Pages</strong>
+      </p>
+      <p>
+        A living site: portfolio 🏪 • blog 📰 • devlog 🧑🏻‍💻 • toolbox 🧰
+      </p>
+      <p>
+        Built with <a href="https://www.11ty.dev/" target="_blank" rel="noopener noreferrer">Eleventy</a>,
+        <a href="https://bulma.io/" target="_blank" rel="noopener noreferrer">Bulma</a>, and
+        <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer">Sass</a> •
+        Hosted on <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>
+      </p>
+      <p class="is-size-7">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io" target="_blank" rel="noopener noreferrer">
+          <span class="icon">
+            <i class="fab fa-github"></i>
+          </span>
+          Clone this repo and roll your own!
+        </a>
+      </p>
+      <p class="is-size-7 mt-2">
+        <a href="https://github.com/MarkusBitterman/MarkusBitterman.github.io/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.3.0</a> •
+        © 2026 Markus Bitterman • Licensed under MIT
+      </p>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- GLSL shader backgrounds for hero sections -->
+  <script src="/js/shader-hero.js" defer></script>
+</body>
+</html>

@@ -44,6 +44,7 @@ module.exports = function(eleventyConfig) {
       includes: "_includes",
       data: "_data",
     },
+    pathPrefix: "/MarkusBitterman.github.io/",
     templateFormats: ["md", "njk", "html"],
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
